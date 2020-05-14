@@ -1,0 +1,11 @@
+.controlNavbar{
+    height: 10%;
+}
+
+.controlRoot{
+    margin-top: 2%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}

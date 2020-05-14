@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+
+body{
+    background-color: black;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+p{
+    color: white;
+    font-size: 20px;
+}
+
+a:focus{
+    outline: none;
+    border: none;
+    -moz-outline-style: none;
+}
+
+input:focus{
+    outline: none;
+}
+
+img{
+    user-select: none;
+}
+
+.icon{
+    max-height: 30px;
+}

@@ -1,0 +1,10 @@
+import { TestBed } from '@angular/core/testing';
+import { IconService } from './icon.service';
+describe('IconService', () => {
+    beforeEach(() => TestBed.configureTestingModule({}));
+    it('should be created', () => {
+        const service = TestBed.get(IconService);
+        expect(service).toBeTruthy();
+    });
+});
+//# sourceMappingURL=icon.service.spec.js.map
