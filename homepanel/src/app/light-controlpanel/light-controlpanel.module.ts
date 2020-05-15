@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule } from '@angular/material/list';
 
-//Components
+// Components
 import { SwitchComponent } from './components/switch/switch.component';
 import { ColorPickerComponent } from './components/color-picker/color-picker.component';
 import { DimmerComponent } from './components/dimmer/dimmer.component';

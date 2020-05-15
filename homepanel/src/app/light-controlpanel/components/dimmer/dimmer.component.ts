@@ -24,12 +24,12 @@ export class DimmerComponent implements OnInit {
 
 	changeHandler(value) {
 		this.updateBrightness(value);
-		let event = {
-			"brightness": this.brightness,
-			"percentage": this.percentage,
-			"type": "BrightnessChangedEvent",
-			"source": "DimmerComponent",
-			"id": this.id
+		const event = {
+			brightness: this.brightness,
+			percentage: this.percentage,
+			type: 'BrightnessChangedEvent',
+			source: 'DimmerComponent',
+			id: this.id
 		};
 		this.brightnessChanged.emit(event);
 	}

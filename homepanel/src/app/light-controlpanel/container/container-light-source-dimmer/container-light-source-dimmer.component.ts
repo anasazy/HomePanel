@@ -31,7 +31,7 @@ export class ContainerLightSourceDimmerComponent implements OnInit {
 			this.panel_source.hue_type);
 	}
 	handleBrightnessChanged(e) {
-		let brightness = e["brightness"];
+		const brightness = e.brightness;
 		this.hue_source.setBrightness(brightness);
 	}
 

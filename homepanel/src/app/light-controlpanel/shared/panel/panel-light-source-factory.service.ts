@@ -6,47 +6,47 @@ import { Injectable } from '@angular/core';
 export class PanelLightSourceFactoryService {
 	light_sources = {
 		1: {
-			"type": "kitchen",
-			"label": "Küche",
-			"hue": {
-				"id": 3,
-				"type": "group"
+			type: 'kitchen',
+			label: 'Küche',
+			hue: {
+				id: 3,
+				type: 'group'
 			},
-			"icons": {
-				"display": "dp_kitchen",
-				"switch": {
-					"off": "sw_kitchen_off",
-					"on": "sw_kitchen_on"
+			icons: {
+				display: 'dp_kitchen',
+				switch: {
+					off: 'sw_kitchen_off',
+					on: 'sw_kitchen_on'
 				}
 			}
 		},
 		2: {
-			"type": "floor",
-			"label": "Flur",
-			"hue": {
-				"id": 2,
-				"type": "group"
+			type: 'floor',
+			label: 'Flur',
+			hue: {
+				id: 2,
+				type: 'group'
 			},
-			"icons": {
-				"display": "dp_floor",
-				"switch": {
-					"off": "sw_floor_off",
-					"on": "sw_floor_on"
+			icons: {
+				display: 'dp_floor',
+				switch: {
+					off: 'sw_floor_off',
+					on: 'sw_floor_on'
 				}
 			}
 		},
 		3: {
-			"type": "bedroom",
-			"label": "Schlafzimmer",
-			"hue": {
-				"id": 1,
-				"type": "group"
+			type: 'bedroom',
+			label: 'Schlafzimmer',
+			hue: {
+				id: 1,
+				type: 'group'
 			},
-			"icons": {
-				"display": "dp_bedroom",
-				"switch": {
-					"off": "sw_bedrom_off",
-					"on": "sw_bedrom_on"
+			icons: {
+				display: 'dp_bedroom',
+				switch: {
+					off: 'sw_bedrom_off',
+					on: 'sw_bedrom_on'
 				}
 			}
 		}
@@ -55,35 +55,35 @@ export class PanelLightSourceFactoryService {
 
 
 	private getItemType(LightSourceID: number): string {
-		return this.light_sources[LightSourceID]["type"];
+		return this.light_sources[LightSourceID].type;
 	}
 
 	private getItemLabel(LightSourceID: number): string {
-		return this.light_sources[LightSourceID]["label"];
+		return this.light_sources[LightSourceID].label;
 	}
 
 	private getHueID(LightSourceID: number): number {
-		return this.light_sources[LightSourceID]["hue"]["id"];
+		return this.light_sources[LightSourceID].hue.id;
 	}
 
 	private getHueType(LightSourceID: number): string {
-		return this.light_sources[LightSourceID]["hue"]["type"];
+		return this.light_sources[LightSourceID].hue.type;
 	}
 
 	private getIconDisplay(LightSourceID: number): string {
-		return this.light_sources[LightSourceID]["icons"]["display"];
+		return this.light_sources[LightSourceID].icons.display;
 	}
 
 	private getIconSwitchOff(LightSourceID: number): string {
-		return this.light_sources[LightSourceID]["icons"]["switch"]["off"];
+		return this.light_sources[LightSourceID].icons.switch.off;
 	}
 
 	private getIconSwitchOn(LightSourceID: number): string {
-		return this.light_sources[LightSourceID]["icons"]["switch"]["on"];
+		return this.light_sources[LightSourceID].icons.switch.on;
 	}
 
 	getLightSource(LightSourceID: number): LightSource {
-		let ls = new LightSource();
+		const ls = new LightSource();
 
 		ls.id = LightSourceID;
 		ls.type = this.getItemType(LightSourceID);

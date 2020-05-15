@@ -40,11 +40,11 @@ export class ColorPickerComponent implements OnInit {
 		this.hexColor = color.hexString;
 		this.hsvColor = color.hsv;
 		this.rgbColor = color.rgb;
-		let event = {
-			"color": { "rgb": this.rgbColor, "hsv": this.hsvColor },
-			"type": "ColorChangedEvent",
-			"source": "ColorPickerComponent",
-			"id": this.id
+		const event = {
+			color: { rgb: this.rgbColor, hsv: this.hsvColor },
+			type: 'ColorChangedEvent',
+			source: 'ColorPickerComponent',
+			id: this.id
 		};
 		this.colorChanged.emit(event);
 	}

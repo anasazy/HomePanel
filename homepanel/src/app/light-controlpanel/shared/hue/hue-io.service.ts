@@ -5,78 +5,78 @@ import { Injectable } from '@angular/core';
 })
 export class HueIOService {
 
-	apikey = "";
+	apikey = '';
 
 	constructor() { }
 
 	sendLightState(LightID: number, State: object) {
-		let endpoint = "http://philips-hue/api/" + this.apikey + "/lights/" + LightID + "/state";
+		const endpoint = 'http://philips-hue/api/' + this.apikey + '/lights/' + LightID + '/state';
 
-		let request = new XMLHttpRequest();
+		const request = new XMLHttpRequest();
 
 		request.open('PUT', endpoint, true);
-		request.setRequestHeader("Content-Type", "application/json");
+		request.setRequestHeader('Content-Type', 'application/json');
 		request.send(JSON.stringify(State));
 	}
 
 	fetchLightState(LightID: number): object {
-		let endpoint = "http://philips-hue/api/" + this.apikey + "/lights/" + LightID;
+		const endpoint = 'http://philips-hue/api/' + this.apikey + '/lights/' + LightID;
 
-		let request = new XMLHttpRequest();
+		const request = new XMLHttpRequest();
 
 		request.open('GET', endpoint, false);
-		request.overrideMimeType("application/json");
+		request.overrideMimeType('application/json');
 		request.send(null);
 
-		let response = JSON.parse(request.responseText);
-		let state = response["state"];
+		const response = JSON.parse(request.responseText);
+		const state = response.state;
 
 		return state;
 	}
 
 	sendGroupState(GroupID: number, State: object) {
-		let endpoint = "http://philips-hue/api/" + this.apikey + "/groups/" + GroupID + "/action";
+		const endpoint = 'http://philips-hue/api/' + this.apikey + '/groups/' + GroupID + '/action';
 
-		let request = new XMLHttpRequest();
+		const request = new XMLHttpRequest();
 
 		request.open('PUT', endpoint, true);
-		request.setRequestHeader("Content-Type", "application/json");
+		request.setRequestHeader('Content-Type', 'application/json');
 		request.send(JSON.stringify(State));
-		console.log("[hueIO tx] group: " + GroupID + " state: " + JSON.stringify(State));
+		console.log('[hueIO tx] group: ' + GroupID + ' state: ' + JSON.stringify(State));
 	}
 
 	fetchAllGroupStates(): object {
-		let endpoint = "http://philips-hue/api/" + this.apikey + "/groups";
+		const endpoint = 'http://philips-hue/api/' + this.apikey + '/groups';
 
-		let request = new XMLHttpRequest();
+		const request = new XMLHttpRequest();
 
 		request.open('GET', endpoint, false);
-		request.overrideMimeType("application/json");
+		request.overrideMimeType('application/json');
 		request.send(null);
 
-		let response = JSON.parse(request.responseText);
-		let states = {};
+		const response = JSON.parse(request.responseText);
+		const states = {};
 
-		for (var room in response) {
-			states[room] = response[room]["action"];
+		for (const room in response) {
+			states[room] = response[room].action;
 		}
-		console.log("[hueIO rx] group: all states");
+		console.log('[hueIO rx] group: all states');
 		return states;
 	}
 
 
 	fetchGroupState(GroupID: number): object {
-		let endpoint = "http://philips-hue/api/" + this.apikey + "/groups/" + GroupID;
+		const endpoint = 'http://philips-hue/api/' + this.apikey + '/groups/' + GroupID;
 
-		let request = new XMLHttpRequest();
+		const request = new XMLHttpRequest();
 
 		request.open('GET', endpoint, false);
-		request.overrideMimeType("application/json");
+		request.overrideMimeType('application/json');
 		request.send(null);
 
-		let response = JSON.parse(request.responseText);
-		let state = response["action"];
-		console.log("[hueIO rx] group: " + GroupID + " state: " + JSON.stringify(state));
+		const response = JSON.parse(request.responseText);
+		const state = response.action;
+		console.log('[hueIO rx] group: ' + GroupID + ' state: ' + JSON.stringify(state));
 		return state;
 	}
 

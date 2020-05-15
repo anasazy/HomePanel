@@ -21,9 +21,9 @@ export class ContainerLightSourceListComponent implements OnInit {
 	}
 
 	getTiles() {
-		let tiles = [];
-		for (let ID of this.IDs) {
-			let tile = this.resolveID(ID);
+		const tiles = [];
+		for (const ID of this.IDs) {
+			const tile = this.resolveID(ID);
 			tiles.push(tile);
 		}
 
@@ -31,9 +31,9 @@ export class ContainerLightSourceListComponent implements OnInit {
 	}
 
 	private resolveID(LightSourceID) {
-		let ls = this.panel_fact_service.getLightSource(LightSourceID);
-		let icon = this.icon_service.getIcon(ls.icon_display);
-		return { "label": ls.label, "icon": icon, "link": LightSourceID + "/conf" };
+		const ls = this.panel_fact_service.getLightSource(LightSourceID);
+		const icon = this.icon_service.getIcon(ls.icon_display);
+		return { label: ls.label, icon, link: LightSourceID + '/conf' };
 	}
 
 }

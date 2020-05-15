@@ -33,7 +33,7 @@ export class ContainerLightSourceColorPickerComponent implements OnInit {
 
 
 	handleColorChanged(e) {
-		let color = e["color"]["hsv"];
+		const color = e.color.hsv;
 		this.hue_source.setColor(color);
 	}
 

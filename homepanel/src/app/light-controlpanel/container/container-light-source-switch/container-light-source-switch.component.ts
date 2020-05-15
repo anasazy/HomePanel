@@ -43,10 +43,11 @@ export class ContainerLightSourceSwitchComponent implements OnInit {
 	}
 
 	handleSwitchChanged(e) {
-		let state = e["state"];
-		if (state == true)
+		const state = e.state;
+		if (state === true) {
 			this.hue_source.setOn();
-		else
+		} else {
 			this.hue_source.setOff();
+		}
 	}
 }

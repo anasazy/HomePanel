@@ -18,7 +18,7 @@ export class PageSettingsComponent implements OnInit {
 	}
 
 	setLightSourceID() {
-		this.light_src_id = this.route.snapshot.params['id'];
+		this.light_src_id = this.route.snapshot.params.id;
 	}
 
 	ngOnInit() {

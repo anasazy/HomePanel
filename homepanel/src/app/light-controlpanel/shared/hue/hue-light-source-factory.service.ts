@@ -15,7 +15,7 @@ export class HueLightSourceFactoryService {
 	}
 
 	getGroup(ID: number): HueGroup {
-		let group = new HueGroup();
+		const group = new HueGroup();
 		group.id = ID;
 		group.controler = this.controler;
 
@@ -23,7 +23,7 @@ export class HueLightSourceFactoryService {
 	}
 
 	getHueLightSource(ID: number, type: string) {
-		if (type == "group") {
+		if (type === 'group') {
 			return this.getGroup(ID);
 		}
 	}

@@ -22,11 +22,11 @@ export class SwitchComponent implements OnInit {
 
 	clickHandler(e) {
 		this.toggleState();
-		let event = {
-			"state": this.state,
-			"type": "SwitchChangedEvent",
-			"source": "SwitchComponent",
-			"id": this.id
+		const event = {
+			state: this.state,
+			type: 'SwitchChangedEvent',
+			source: 'SwitchComponent',
+			id: this.id
 		};
 		this.switchChanged.emit(event);
 	}
@@ -40,8 +40,7 @@ export class SwitchComponent implements OnInit {
 	getIcon() {
 		if (this.state) {
 			return this.icon_on;
-		}
-		else {
+		} else {
 			return this.icon_off;
 		}
 	}
