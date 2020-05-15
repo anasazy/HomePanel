@@ -32,49 +32,49 @@ import { PageListComponent } from './pages/page-list/page-list.component';
 import { PageSettingsComponent } from './pages/page-settings/page-settings.component';
 
 const routes: Routes = [
-  {
-    path: 'dashboard',
-    component: PageDashboardComponent
-  },
-  {
-    path: 'sources/:id/conf',
-    component: PageSettingsComponent
-  },
-  {
-    path: 'sources',
-    component: PageListComponent
-  },
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full'
-  }
+	{
+		path: 'dashboard',
+		component: PageDashboardComponent
+	},
+	{
+		path: 'sources/:id/conf',
+		component: PageSettingsComponent
+	},
+	{
+		path: 'sources',
+		component: PageListComponent
+	},
+	{
+		path: '',
+		redirectTo: 'dashboard',
+		pathMatch: 'full'
+	}
 ];
 
 @NgModule({
-  declarations: [
-    SwitchComponent,
-    DimmerComponent,
-    ColorPickerComponent,
-    PageDashboardComponent,
-    ContainerLightSourceComponent,
-    ContainerLightSourceSwitchComponent,
-    ContainerLightSourceDimmerComponent,
-    ContainerLightSourceColorPickerComponent,
-    SelectButtonComponent,
-    ContainerLightSourceLabelComponent,
-    MenuButtonComponent,
-    PageListComponent,
-    ContainerLightSourceListComponent,
-    LightSourceTileComponent,
-    PageSettingsComponent,
-  ],
-  providers: [],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    MatGridListModule,
-    MatListModule
-  ]
+	declarations: [
+		SwitchComponent,
+		DimmerComponent,
+		ColorPickerComponent,
+		PageDashboardComponent,
+		ContainerLightSourceComponent,
+		ContainerLightSourceSwitchComponent,
+		ContainerLightSourceDimmerComponent,
+		ContainerLightSourceColorPickerComponent,
+		SelectButtonComponent,
+		ContainerLightSourceLabelComponent,
+		MenuButtonComponent,
+		PageListComponent,
+		ContainerLightSourceListComponent,
+		LightSourceTileComponent,
+		PageSettingsComponent,
+	],
+	providers: [],
+	imports: [
+		CommonModule,
+		RouterModule.forChild(routes),
+		MatGridListModule,
+		MatListModule
+	]
 })
 export class LightControlpanelModule { }

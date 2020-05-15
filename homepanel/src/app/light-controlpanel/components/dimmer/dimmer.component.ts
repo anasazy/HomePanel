@@ -2,56 +2,56 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 
 @Component({
-  selector: 'app-dimmer',
-  templateUrl: './dimmer.component.html',
-  styleUrls: ['./dimmer.component.css']
+	selector: 'app-dimmer',
+	templateUrl: './dimmer.component.html',
+	styleUrls: ['./dimmer.component.css']
 })
 export class DimmerComponent implements OnInit {
-  @Input() id;
-  @Input() brightness;
+	@Input() id;
+	@Input() brightness;
 
-  rangeMin = 1;
-  rangeMax = 254;
+	rangeMin = 1;
+	rangeMax = 254;
 
-  percentage = 0
+	percentage = 0;
 
-  @Output() brightnessChanged = new EventEmitter()
+	@Output() brightnessChanged = new EventEmitter();
 
 
-  constructor() {}
+	constructor() { }
 
-  ngOnInit() {}
+	ngOnInit() { }
 
-  changeHandler(value){
-      this.updateBrightness(value);
-      let event = {
-        "brightness": this.brightness,
-        "percentage": this.percentage,
-        "type": "BrightnessChangedEvent",
-        "source": "DimmerComponent",
-        "id": this.id
-      }
-      this.brightnessChanged.emit(event);
-  }
+	changeHandler(value) {
+		this.updateBrightness(value);
+		let event = {
+			"brightness": this.brightness,
+			"percentage": this.percentage,
+			"type": "BrightnessChangedEvent",
+			"source": "DimmerComponent",
+			"id": this.id
+		};
+		this.brightnessChanged.emit(event);
+	}
 
-  updateBrightness(value){
-    this.brightness = value;
-  }
-  
+	updateBrightness(value) {
+		this.brightness = value;
+	}
 
-  // Visuals
-  getRangeBarCSS(){
-      this.calcFillPercentage()
-      return this.getGradientString();
-  }
 
-  getGradientString(){
-    return 'linear-gradient(0deg, rgb('+this.brightness+','+this.brightness+','+this.brightness+') '+ this.percentage +'%, rgb(25,25,25) '+ this.percentage +'%)';
-  }
+	// Visuals
+	getRangeBarCSS() {
+		this.calcFillPercentage();
+		return this.getGradientString();
+	}
 
-  calcFillPercentage(){
-      this.percentage = (this.brightness / this.rangeMax) * 100;
-  }
+	getGradientString() {
+		return 'linear-gradient(0deg, rgb(' + this.brightness + ',' + this.brightness + ',' + this.brightness + ') ' + this.percentage + '%, rgb(25,25,25) ' + this.percentage + '%)';
+	}
+
+	calcFillPercentage() {
+		this.percentage = (this.brightness / this.rangeMax) * 100;
+	}
 
 }
 

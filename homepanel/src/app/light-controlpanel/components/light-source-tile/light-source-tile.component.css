@@ -1,20 +1,20 @@
-.flex{
-    display: flex;
+.flex {
+	display: flex;
 }
 
-.icon{
-    max-height: 30px;
+.icon {
+	max-height: 30px;
 }
 
-.split-distance{
-  margin-right: 10px;  
+.split-distance {
+	margin-right: 10px;
 }
 
-p{
-    margin-top: 0px;
-    margin-bottom: 0px;
+p {
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
-a{
-    text-decoration: none;
+a {
+	text-decoration: none;
 }
