@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-dashboard.component.css']
 })
 export class PageDashboardComponent implements OnInit {
-  IDs = [1,2,3]
+
+  IDs = [1, 2, 3];
 
   isShowingSwitches = true;
   isShowingBrightness = false;
@@ -16,14 +17,14 @@ export class PageDashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  handleShowSwitches(){
-  this.isShowingSwitches = true;
-  this.isShowingBrightness = false;  
+  handleShowSwitches() {
+    this.isShowingSwitches = true;
+    this.isShowingBrightness = false;
   }
 
-  handleShowBrigthness(){
-  this.isShowingSwitches = false;
-  this.isShowingBrightness = true;
+  handleShowBrigthness() {
+    this.isShowingSwitches = false;
+    this.isShowingBrightness = true;
   }
 
 }

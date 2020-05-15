@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-list.component.css']
 })
 export class PageListComponent implements OnInit {
-  light_sources = [1,2,3];
+
+  light_sources = [1, 2, 3];
+
   constructor() { }
 
   ngOnInit() {

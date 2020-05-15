@@ -10,29 +10,33 @@ import { HueLightSourceFactoryService } from '../../shared/hue/hue-light-source-
   styleUrls: ['./container-light-source-dimmer.component.css']
 })
 export class ContainerLightSourceDimmerComponent implements OnInit {
+
   @Input() source_id;
 
   panel_source;
   hue_source;
 
   constructor(
-      private icon_service: IconService,
-      private panel_fact_service: PanelLightSourceFactoryService,
-      private hue_fact_service: HueLightSourceFactoryService
-      ) { }
+    private icon_service: IconService,
+    private panel_fact_service: PanelLightSourceFactoryService,
+    private hue_fact_service: HueLightSourceFactoryService
+  ) { }
 
   ngOnInit() {
-      this.resolveID();
+    this.resolveID();
   }
 
-  private resolveID(): void{
-      this.panel_source = this.panel_fact_service.getLightSource(this.source_id);
-      this.hue_source = this.hue_fact_service.getHueLightSource(this.panel_source.hue_id,
-                                                                  this.panel_source.hue_type);
+  private resolveID(): void {
+    this.panel_source = this.panel_fact_service.getLightSource(this.source_id);
+
+    this.hue_source = this.hue_fact_service.getHueLightSource(
+      this.panel_source.hue_id,
+      this.panel_source.hue_type
+    );
   }
-  handleBrightnessChanged(e){
-      let brightness = e["brightness"];
-      this.hue_source.setBrightness(brightness);
+  handleBrightnessChanged(e) {
+    let brightness = e["brightness"];
+    this.hue_source.setBrightness(brightness);
   }
 
 }

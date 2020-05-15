@@ -1,20 +1,18 @@
-<app-menu-button
-[icon]="'/assets/img/nav/menu.png'"
-[link]="'/light/sources'">
+<app-menu-button [icon]="'/assets/img/nav/menu.png'" [link]="'/light/sources'">
 </app-menu-button>
 
 <div class="flex">
-    <app-container-light-source-label
+  <app-container-light-source-label
     class="h-center"
     [source_id]="light_src_id">
-    </app-container-light-source-label>   
-    <div class="flex centered">
-        <app-container-light-source-dimmer
-        class="distance"
-        [source_id]="light_src_id">
-        </app-container-light-source-dimmer> 
-        <app-container-light-source-color-picker
-        [source_id]="light_src_id">
-        </app-container-light-source-color-picker> 
-    </div>  
+  </app-container-light-source-label>
+  <div class="flex centered">
+    <app-container-light-source-dimmer
+      class="distance"
+      [source_id]="light_src_id">
+    </app-container-light-source-dimmer>
+    <app-container-light-source-color-picker
+      [source_id]="light_src_id">
+    </app-container-light-source-color-picker>
+  </div>
 </div>
