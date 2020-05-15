@@ -6,7 +6,7 @@ describe('HueAsyncGroupControllerService', () => {
 	beforeEach(() => TestBed.configureTestingModule({}));
 
 	it('should be created', () => {
-		const service: HueAsyncGroupControllerService = TestBed.get(HueAsyncGroupControllerService);
+		const service: HueAsyncGroupControllerService = TestBed.inject(HueAsyncGroupControllerService);
 		expect(service).toBeTruthy();
 	});
 });

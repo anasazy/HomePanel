@@ -6,7 +6,7 @@ describe('HueIOService', () => {
 	beforeEach(() => TestBed.configureTestingModule({}));
 
 	it('should be created', () => {
-		const service: HueIOService = TestBed.get(HueIOService);
+		const service: HueIOService = TestBed.inject(HueIOService);
 		expect(service).toBeTruthy();
 	});
 });

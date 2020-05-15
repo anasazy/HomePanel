@@ -6,7 +6,7 @@ describe('HueLightSourceFactoryService', () => {
 	beforeEach(() => TestBed.configureTestingModule({}));
 
 	it('should be created', () => {
-		const service: HueLightSourceFactoryService = TestBed.get(HueLightSourceFactoryService);
+		const service: HueLightSourceFactoryService = TestBed.inject(HueLightSourceFactoryService);
 		expect(service).toBeTruthy();
 	});
 });

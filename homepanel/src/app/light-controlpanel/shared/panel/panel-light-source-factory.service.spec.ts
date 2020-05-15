@@ -6,7 +6,7 @@ describe('PanelLightSourceFactoryService', () => {
 	beforeEach(() => TestBed.configureTestingModule({}));
 
 	it('should be created', () => {
-		const service: PanelLightSourceFactoryService = TestBed.get(PanelLightSourceFactoryService);
+		const service: PanelLightSourceFactoryService = TestBed.inject(PanelLightSourceFactoryService);
 		expect(service).toBeTruthy();
 	});
 });

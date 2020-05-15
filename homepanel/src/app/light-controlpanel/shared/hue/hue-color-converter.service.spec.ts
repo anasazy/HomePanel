@@ -6,7 +6,7 @@ describe('HueColorConverterService', () => {
 	beforeEach(() => TestBed.configureTestingModule({}));
 
 	it('should be created', () => {
-		const service: HueColorConverterService = TestBed.get(HueColorConverterService);
+		const service: HueColorConverterService = TestBed.inject(HueColorConverterService);
 		expect(service).toBeTruthy();
 	});
 });

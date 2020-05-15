@@ -6,7 +6,7 @@ describe('PanelNavigationService', () => {
 	beforeEach(() => TestBed.configureTestingModule({}));
 
 	it('should be created', () => {
-		const service: PanelNavigationService = TestBed.get(PanelNavigationService);
+		const service: PanelNavigationService = TestBed.inject(PanelNavigationService);
 		expect(service).toBeTruthy();
 	});
 });
