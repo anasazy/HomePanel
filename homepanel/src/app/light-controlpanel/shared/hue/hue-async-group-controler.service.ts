@@ -30,11 +30,11 @@ export class HueAsyncGroupControllerService {
 
 	// Hue communication
 	sendHueLightState(groupID: number, state: object): void {
-		this.hueioservice.sendGroupState(groupID, state);
+		this.hueioservice.sendGroupState(groupID, state).subscribe();
 	}
 
 	fetchHueLightStates(): void {
-		this.states = this.hueioservice.fetchAllGroupStates();
+		this.hueioservice.fetchAllGroupStates().subscribe(states => this.states = states);
 	}
 
 	syncBrightnessChanges(): void {
