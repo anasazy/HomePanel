@@ -4,9 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatIconModule} from '@angular/material/icon';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatListModule} from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatListModule } from '@angular/material/list';
 
 //Components
 import { SwitchComponent } from './components/switch/switch.component';
@@ -26,35 +26,30 @@ import { ContainerLightSourceLabelComponent } from './container/container-light-
 import { ContainerLightSourceComponent } from './container/container-light-source/container-light-source.component';
 import { ContainerLightSourceListComponent } from './container/container-light-source-list/container-light-source-list.component';
 
-
 // Pages
 import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
 import { PageListComponent } from './pages/page-list/page-list.component';
 import { PageSettingsComponent } from './pages/page-settings/page-settings.component';
 
-
-
-
-
 const routes: Routes = [
   {
-    path: 'light',
-    redirectTo: 'light/dashboard',
-    pathMatch: 'full' 
-  },
-  {
-    path: 'light/dashboard',
+    path: 'dashboard',
     component: PageDashboardComponent
   },
   {
-    path: 'light/sources',
+    path: 'sources/:id/conf',
+    component: PageSettingsComponent
+  },
+  {
+    path: 'sources',
     component: PageListComponent
   },
   {
-    path: 'light/sources/:id/conf',
-    component: PageSettingsComponent
-  },
-  ];
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full'
+  }
+];
 
 @NgModule({
   declarations: [
@@ -73,12 +68,11 @@ const routes: Routes = [
     ContainerLightSourceListComponent,
     LightSourceTileComponent,
     PageSettingsComponent,
-
   ],
   providers: [],
   imports: [
-    RouterModule.forChild(routes),
     CommonModule,
+    RouterModule.forChild(routes),
     MatGridListModule,
     MatListModule
   ]
