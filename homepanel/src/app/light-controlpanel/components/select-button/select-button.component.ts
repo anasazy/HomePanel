@@ -6,6 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 	styleUrls: ['./select-button.component.css']
 })
 export class SelectButtonComponent implements OnInit {
+
 	@Input() label;
 	@Input() isHighlighted;
 
@@ -13,10 +14,10 @@ export class SelectButtonComponent implements OnInit {
 
 	constructor() { }
 
-	ngOnInit() {
+	ngOnInit(): void {
 	}
 
-	handleSelect() {
+	handleSelect(): void {
 		this.buttonSelected.emit();
 	}
 }

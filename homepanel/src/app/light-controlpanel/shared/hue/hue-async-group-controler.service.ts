@@ -8,12 +8,14 @@ import { HueIOService } from './hue-io.service';
 @Injectable({
 	providedIn: 'root'
 })
-export class HueAsyncGroupControlerService {
+export class HueAsyncGroupControllerService {
 
-	states = null;
 	changes = { brightness: {}, color: {}, on: {} };
+	states = null;
+
 	observer = timer(2000, 5000);
 	syncCheck = this.observer.subscribe(val => this.fetchHueLightStates());
+
 	syncTimer = timer(100, 600);
 	brightnessSync = this.syncTimer.subscribe(val => this.syncBrightnessChanges());
 	colorSync = this.syncTimer.subscribe(val => this.syncColorChanges());
@@ -27,15 +29,15 @@ export class HueAsyncGroupControlerService {
 	}
 
 	// Hue communication
-	sendHueLightState(GroupID: number, state: object) {
-		this.hueioservice.sendGroupState(GroupID, state);
+	sendHueLightState(groupID: number, state: object): void {
+		this.hueioservice.sendGroupState(groupID, state);
 	}
 
-	fetchHueLightStates() {
+	fetchHueLightStates(): void {
 		this.states = this.hueioservice.fetchAllGroupStates();
 	}
 
-	syncBrightnessChanges() {
+	syncBrightnessChanges(): void {
 		for (const id in this.changes.brightness) {
 			const brightness = this.changes.brightness[id];
 			const mesg = { on: true, bri: Number(brightness) };
@@ -44,7 +46,7 @@ export class HueAsyncGroupControlerService {
 		}
 	}
 
-	syncColorChanges() {
+	syncColorChanges(): void {
 		for (const id in this.changes.color) {
 			const color = this.changes.color[id];
 			const mesg = { on: true, sat: color.sat, hue: color.hue };
@@ -53,7 +55,7 @@ export class HueAsyncGroupControlerService {
 		}
 	}
 
-	sycOnChanges() {
+	sycOnChanges(): void {
 		for (const id in this.changes.on) {
 			const on = this.changes.on[id];
 			const mesg = { on };
@@ -63,38 +65,38 @@ export class HueAsyncGroupControlerService {
 	}
 
 	// Set states
-	setOn(GroupID: number) {
-		this.changes.on[GroupID] = true;
-		this.states[GroupID].on = true;
+	setOn(groupID: number): void {
+		this.changes.on[groupID] = true;
+		this.states[groupID].on = true;
 	}
 
-	setOff(GroupID: number) {
-		this.changes.on[GroupID] = false;
-		this.states[GroupID].on = false;
+	setOff(groupID: number): void {
+		this.changes.on[groupID] = false;
+		this.states[groupID].on = false;
 	}
 
-	setBrightness(GroupID: number, brightness: number) {
-		this.changes.brightness[GroupID] = brightness;
-		this.states[GroupID].bri = brightness;
+	setBrightness(groupID: number, brightness: number): void {
+		this.changes.brightness[groupID] = brightness;
+		this.states[groupID].bri = brightness;
 	}
 
-	setColor(GroupID: number, HSVColor: object) {
-		const cie = this.colorservice.hsv_to_cie(HSVColor.h, HSVColor.s, HSVColor.v);
-		this.changes.color[GroupID] = cie;
-		this.states[GroupID].hue = cie.hue;
-		this.states[GroupID].sat = cie.sat;
+	setColor(groupID: number, hsvColor): void {
+		const cie = this.colorservice.hsv2cie(hsvColor.h, hsvColor.s, hsvColor.v);
+		this.changes.color[groupID] = cie;
+		this.states[groupID].hue = cie.hue;
+		this.states[groupID].sat = cie.sat;
 	}
 
 	// Get states
-	getSwitchState(GroupID: number): number {
-		return this.states[GroupID].on;
+	getSwitchState(groupID: number): number {
+		return this.states[groupID].on;
 	}
 
-	getBrightness(GroupID: number): number {
-		return this.states[GroupID].bri;
+	getBrightness(groupID: number): number {
+		return this.states[groupID].bri;
 	}
 
-	getColor(GroupID: number): object {
+	getColor(groupID: number) {
 		return {};
 	}
 }

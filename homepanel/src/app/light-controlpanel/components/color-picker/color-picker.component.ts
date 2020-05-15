@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, NgZone } from '@angular/core';
 
-import { iro } from '@jaames/iro/dist/iro';
-declare var iro: any;
-
+import iro from '@jaames/iro';
 
 @Component({
 	selector: 'app-color-picker',
@@ -10,21 +8,21 @@ declare var iro: any;
 	styleUrls: ['./color-picker.component.css']
 })
 export class ColorPickerComponent implements OnInit {
-	@Input() id;
-	@Output() colorChanged = new EventEmitter();
+
 	colorPicker = null;
-	ngZone = null;
-
 	hexColor = null;
-	rgbColor = null;
 	hsvColor = null;
+	rgbColor = null;
 
+	@Input() id;
 
-	constructor(ngZone: NgZone) {
-		this.ngZone = ngZone;
-	}
+	@Output() colorChanged = new EventEmitter();
 
-	ngOnInit() {
+	constructor(
+		private readonly ngZone: NgZone
+	) { }
+
+	ngOnInit(): void {
 		this.colorPicker = new iro.ColorPicker('#picker', {
 			layout: [
 				{
@@ -33,10 +31,9 @@ export class ColorPickerComponent implements OnInit {
 			]
 		});
 		this.colorPicker.on('color:change', (color, changes) => this.ngZone.run(() => this.onColorChange(color, changes)));
-
 	}
 
-	onColorChange(color, changes) {
+	onColorChange(color, changes): void {
 		this.hexColor = color.hexString;
 		this.hsvColor = color.hsv;
 		this.rgbColor = color.rgb;

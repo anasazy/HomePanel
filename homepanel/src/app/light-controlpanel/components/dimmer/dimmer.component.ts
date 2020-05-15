@@ -7,49 +7,48 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 	styleUrls: ['./dimmer.component.css']
 })
 export class DimmerComponent implements OnInit {
-	@Input() id;
-	@Input() brightness;
-
-	rangeMin = 1;
-	rangeMax = 254;
 
 	percentage = 0;
+	rangeMax = 254;
+	rangeMin = 1;
+
+	@Input() brightness;
+	@Input() id;
 
 	@Output() brightnessChanged = new EventEmitter();
 
-
 	constructor() { }
 
-	ngOnInit() { }
+	ngOnInit(): void {
+	}
 
-	changeHandler(value) {
+	changeHandler(value): void {
 		this.updateBrightness(value);
 		const event = {
 			brightness: this.brightness,
+			id: this.id,
 			percentage: this.percentage,
-			type: 'BrightnessChangedEvent',
 			source: 'DimmerComponent',
-			id: this.id
+			type: 'BrightnessChangedEvent',
 		};
 		this.brightnessChanged.emit(event);
 	}
 
-	updateBrightness(value) {
+	updateBrightness(value): void {
 		this.brightness = value;
 	}
 
-
 	// Visuals
-	getRangeBarCSS() {
+	getRangeBarCSS(): string {
 		this.calcFillPercentage();
 		return this.getGradientString();
 	}
 
-	getGradientString() {
-		return 'linear-gradient(0deg, rgb(' + this.brightness + ',' + this.brightness + ',' + this.brightness + ') ' + this.percentage + '%, rgb(25,25,25) ' + this.percentage + '%)';
+	getGradientString(): string {
+		return `linear-gradient(0deg, rgb(${this.brightness},${this.brightness},${this.brightness}) ${this.percentage}%, rgb(25,25,25) ${this.percentage}%)`;
 	}
 
-	calcFillPercentage() {
+	calcFillPercentage(): void {
 		this.percentage = (this.brightness / this.rangeMax) * 100;
 	}
 

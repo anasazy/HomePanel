@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { PanelLightSourceFactoryService } from '../../shared/panel/panel-light-source-factory.service';
+import { LightSource } from '../../models';
 
 @Component({
 	selector: 'app-container-light-source-label',
@@ -8,20 +9,17 @@ import { PanelLightSourceFactoryService } from '../../shared/panel/panel-light-s
 	styleUrls: ['./container-light-source-label.component.css']
 })
 export class ContainerLightSourceLabelComponent implements OnInit {
-	@Input() source_id;
 
-	light_source;
+	lightSource: LightSource;
+
+	@Input() sourceID;
 
 	constructor(
-		private panel_fact_service: PanelLightSourceFactoryService
+		private readonly panelService: PanelLightSourceFactoryService,
 	) { }
 
 	ngOnInit() {
-		this.resolveID();
-	}
-
-	resolveID() {
-		this.light_source = this.panel_fact_service.getLightSource(this.source_id);
+		this.lightSource = this.panelService.getLightSource(this.sourceID);
 	}
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { IconService } from '../../shared/icon.service';
 import { PanelLightSourceFactoryService } from '../../shared/panel/panel-light-source-factory.service';
@@ -8,32 +8,34 @@ import { PanelLightSourceFactoryService } from '../../shared/panel/panel-light-s
 	templateUrl: './container-light-source-list.component.html',
 	styleUrls: ['./container-light-source-list.component.css']
 })
-export class ContainerLightSourceListComponent implements OnInit {
-	@Input() IDs;
+export class ContainerLightSourceListComponent implements OnInit, OnChanges {
+
+	tiles;
+
+	@Input() IDs: number[];
 
 	constructor(
-		private icon_service: IconService,
-		private panel_fact_service: PanelLightSourceFactoryService
+		private readonly iconService: IconService,
+		private readonly panelService: PanelLightSourceFactoryService,
 	) { }
 
 	ngOnInit() {
 
 	}
 
-	getTiles() {
-		const tiles = [];
-		for (const ID of this.IDs) {
-			const tile = this.resolveID(ID);
-			tiles.push(tile);
-		}
-
-		return tiles;
+	ngOnChanges(changes: SimpleChanges): void {
+		this.tiles = this.IDs.map(id => this.resolveID(id));
 	}
 
-	private resolveID(LightSourceID) {
-		const ls = this.panel_fact_service.getLightSource(LightSourceID);
-		const icon = this.icon_service.getIcon(ls.icon_display);
-		return { label: ls.label, icon, link: LightSourceID + '/conf' };
+	private resolveID(lightSourceID: number) {
+		const lightSource = this.panelService.getLightSource(lightSourceID);
+		const icon = this.iconService.getIcon(lightSource.icon_display);
+
+		return {
+			label: lightSource.label,
+			icon,
+			link: lightSourceID + '/conf'
+		};
 	}
 
 }

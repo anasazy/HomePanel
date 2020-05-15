@@ -7,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageListComponent implements OnInit {
 
-	light_sources = [1, 2, 3];
+	lightSources = [1, 2, 3];
 
 	constructor() { }
 
-	ngOnInit() {
+	ngOnInit(): void {
 	}
 
 }

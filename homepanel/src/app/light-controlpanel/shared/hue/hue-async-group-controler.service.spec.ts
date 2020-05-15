@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HueAsyncGroupControlerService } from './hue-async-group-controler.service';
+import { HueAsyncGroupControllerService } from './hue-async-group-controler.service';
 
-describe('HueAsyncGroupControlerService', () => {
+describe('HueAsyncGroupControllerService', () => {
 	beforeEach(() => TestBed.configureTestingModule({}));
 
 	it('should be created', () => {
-		const service: HueAsyncGroupControlerService = TestBed.get(HueAsyncGroupControlerService);
+		const service: HueAsyncGroupControllerService = TestBed.get(HueAsyncGroupControllerService);
 		expect(service).toBeTruthy();
 	});
 });

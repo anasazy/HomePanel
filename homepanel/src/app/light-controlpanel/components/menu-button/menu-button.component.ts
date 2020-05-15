@@ -6,12 +6,13 @@ import { Component, OnInit, Input } from '@angular/core';
 	styleUrls: ['./menu-button.component.css']
 })
 export class MenuButtonComponent implements OnInit {
+
 	@Input() icon;
 	@Input() link;
 
 	constructor() { }
 
-	ngOnInit() {
+	ngOnInit(): void {
 	}
 
 }

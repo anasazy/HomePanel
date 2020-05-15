@@ -12,18 +12,18 @@ import { HueLightSourceFactoryService } from '../../shared/hue/hue-light-source-
 	styleUrls: ['./container-light-source-switch.component.css']
 })
 export class ContainerLightSourceSwitchComponent implements OnInit {
-	@Input() source_id;
 
-	panel_source;
-	hue_source;
+	hueSource;
+	iconSwitchOff;
+	iconSwitchOn;
+	panelSource;
 
-	icon_switch_off;
-	icon_switch_on;
+	@Input() sourceID;
 
 	constructor(
-		private icon_service: IconService,
-		private panel_fact_service: PanelLightSourceFactoryService,
-		private hue_fact_service: HueLightSourceFactoryService
+		private readonly iconService: IconService,
+		private readonly panelService: PanelLightSourceFactoryService,
+		private readonly hueService: HueLightSourceFactoryService,
 	) { }
 
 	ngOnInit() {
@@ -32,22 +32,22 @@ export class ContainerLightSourceSwitchComponent implements OnInit {
 	}
 
 	private resolveID(): void {
-		this.panel_source = this.panel_fact_service.getLightSource(this.source_id);
-		this.hue_source = this.hue_fact_service.getHueLightSource(this.panel_source.hue_id,
-			this.panel_source.hue_type);
+		this.panelSource = this.panelService.getLightSource(this.sourceID);
+		this.hueSource = this.hueService.getHueLightSource(this.panelSource.hue_id, this.panelSource.hue_type);
 	}
 
 	private getIcons(): void {
-		this.icon_switch_off = this.icon_service.getIcon(this.panel_source.icon_switch_off);
-		this.icon_switch_on = this.icon_service.getIcon(this.panel_source.icon_switch_on);
+		this.iconSwitchOff = this.iconService.getIcon(this.panelSource.icon_switch_off);
+		this.iconSwitchOn = this.iconService.getIcon(this.panelSource.icon_switch_on);
 	}
 
-	handleSwitchChanged(e) {
+	handleSwitchChanged(e): void {
 		const state = e.state;
+
 		if (state === true) {
-			this.hue_source.setOn();
+			this.hueSource.setOn();
 		} else {
-			this.hue_source.setOff();
+			this.hueSource.setOff();
 		}
 	}
 }

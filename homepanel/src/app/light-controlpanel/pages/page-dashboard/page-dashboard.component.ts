@@ -13,15 +13,15 @@ export class PageDashboardComponent implements OnInit {
 
 	constructor() { }
 
-	ngOnInit() {
+	ngOnInit(): void {
 	}
 
-	handleShowSwitches() {
+	handleShowSwitches(): void {
 		this.isShowingSwitches = true;
 		this.isShowingBrightness = false;
 	}
 
-	handleShowBrigthness() {
+	handleShowBrigthness(): void {
 		this.isShowingSwitches = false;
 		this.isShowingBrightness = true;
 	}

@@ -8,20 +8,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PageSettingsComponent implements OnInit {
 
-	light_src_id;
+	lightSourceId;
 
 	constructor(
 		private readonly route: ActivatedRoute,
-		private router: Router
-	) {
-		router.events.subscribe((val) => this.setLightSourceID());
-	}
+		private readonly router: Router
+	) { }
 
-	setLightSourceID() {
-		this.light_src_id = this.route.snapshot.params.id;
-	}
-
-	ngOnInit() {
+	ngOnInit(): void {
+		this.router.events.subscribe(() => {
+			this.lightSourceId = this.route.snapshot.params.id;
+		});
 	}
 
 }

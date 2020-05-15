@@ -21,7 +21,7 @@
 	<mat-grid-tile *ngFor="let ls of IDs">
 		<div>
 			<app-container-light-source-switch
-				[source_id]="ls">
+				[sourceID]="ls">
 			</app-container-light-source-switch>
 		</div>
 	</mat-grid-tile>
@@ -30,10 +30,10 @@
 <mat-grid-list *ngIf="isShowingBrightness" cols="3" [style.background]="'black'">
 	<mat-grid-tile *ngFor="let ls of IDs">
 		<app-container-light-source-dimmer
-			[source_id]="ls">
+			[sourceID]="ls">
 		</app-container-light-source-dimmer>
 		<app-container-light-source-label
-			[source_id]="ls">
+			[sourceID]="ls">
 		</app-container-light-source-label>
 	</mat-grid-tile>
 </mat-grid-list>

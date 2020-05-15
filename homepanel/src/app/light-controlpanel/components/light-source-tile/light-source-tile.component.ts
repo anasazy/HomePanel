@@ -6,8 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
 	styleUrls: ['./light-source-tile.component.css']
 })
 export class LightSourceTileComponent implements OnInit {
-	@Input() label;
+
 	@Input() icon;
+	@Input() label;
 	@Input() link;
 
 	constructor() { }

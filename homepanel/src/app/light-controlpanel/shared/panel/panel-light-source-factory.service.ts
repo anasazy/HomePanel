@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 
+import { LightSource } from '../../models';
+
 @Injectable({
 	providedIn: 'root'
 })
 export class PanelLightSourceFactoryService {
-	light_sources = {
+
+	lightSources = {
 		1: {
 			type: 'kitchen',
 			label: 'Küche',
@@ -51,67 +54,52 @@ export class PanelLightSourceFactoryService {
 			}
 		}
 	};
+
 	constructor() { }
 
-
-	private getItemType(LightSourceID: number): string {
-		return this.light_sources[LightSourceID].type;
+	private getItemType(lightSourceID: number): string {
+		return this.lightSources[lightSourceID].type;
 	}
 
-	private getItemLabel(LightSourceID: number): string {
-		return this.light_sources[LightSourceID].label;
+	private getItemLabel(lightSourceID: number): string {
+		return this.lightSources[lightSourceID].label;
 	}
 
-	private getHueID(LightSourceID: number): number {
-		return this.light_sources[LightSourceID].hue.id;
+	private getHueID(lightSourceID: number): number {
+		return this.lightSources[lightSourceID].hue.id;
 	}
 
-	private getHueType(LightSourceID: number): string {
-		return this.light_sources[LightSourceID].hue.type;
+	private getHueType(lightSourceID: number): string {
+		return this.lightSources[lightSourceID].hue.type;
 	}
 
-	private getIconDisplay(LightSourceID: number): string {
-		return this.light_sources[LightSourceID].icons.display;
+	private getIconDisplay(lightSourceID: number): string {
+		return this.lightSources[lightSourceID].icons.display;
 	}
 
-	private getIconSwitchOff(LightSourceID: number): string {
-		return this.light_sources[LightSourceID].icons.switch.off;
+	private getIconSwitchOff(lightSourceID: number): string {
+		return this.lightSources[lightSourceID].icons.switch.off;
 	}
 
-	private getIconSwitchOn(LightSourceID: number): string {
-		return this.light_sources[LightSourceID].icons.switch.on;
+	private getIconSwitchOn(lightSourceID: number): string {
+		return this.lightSources[lightSourceID].icons.switch.on;
 	}
 
-	getLightSource(LightSourceID: number): LightSource {
+	getLightSource(lightSourceID: number): LightSource {
 		const ls = new LightSource();
 
-		ls.id = LightSourceID;
-		ls.type = this.getItemType(LightSourceID);
-		ls.label = this.getItemLabel(LightSourceID);
+		ls.id = lightSourceID;
+		ls.type = this.getItemType(lightSourceID);
+		ls.label = this.getItemLabel(lightSourceID);
 
-		ls.hue_id = this.getHueID(LightSourceID);
-		ls.hue_type = this.getHueType(LightSourceID);
+		ls.hue_id = this.getHueID(lightSourceID);
+		ls.hue_type = this.getHueType(lightSourceID);
 
-		ls.icon_display = this.getIconDisplay(LightSourceID);
-		ls.icon_switch_off = this.getIconSwitchOff(LightSourceID);
-		ls.icon_switch_on = this.getIconSwitchOn(LightSourceID);
+		ls.icon_display = this.getIconDisplay(lightSourceID);
+		ls.icon_switch_off = this.getIconSwitchOff(lightSourceID);
+		ls.icon_switch_on = this.getIconSwitchOn(lightSourceID);
 
 		return ls;
 	}
 
-}
-
-class LightSource {
-	constructor() { }
-
-	id;
-	type;
-	label;
-
-	hue_id;
-	hue_type;
-
-	icon_display;
-	icon_switch_off;
-	icon_switch_on;
 }

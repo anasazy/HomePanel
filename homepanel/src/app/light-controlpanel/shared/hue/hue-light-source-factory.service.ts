@@ -1,30 +1,28 @@
 import { Injectable } from '@angular/core';
 
 import { HueGroup } from './hue-models';
-import { HueAsyncGroupControlerService } from './hue-async-group-controler.service';
+import { HueAsyncGroupControllerService } from './hue-async-group-controler.service';
 
 @Injectable({
 	providedIn: 'root'
 })
 
 export class HueLightSourceFactoryService {
-	controler;
 
-	constructor(controler: HueAsyncGroupControlerService) {
-		this.controler = controler;
-	}
+	constructor(
+		private readonly controller: HueAsyncGroupControllerService
+	) { }
 
-	getGroup(ID: number): HueGroup {
+	getGroup(id: number): HueGroup {
 		const group = new HueGroup();
-		group.id = ID;
-		group.controler = this.controler;
-
+		group.id = id;
+		group.controller = this.controller;
 		return group;
 	}
 
-	getHueLightSource(ID: number, type: string) {
+	getHueLightSource(id: number, type: string): HueGroup {
 		if (type === 'group') {
-			return this.getGroup(ID);
+			return this.getGroup(id);
 		}
 	}
 }

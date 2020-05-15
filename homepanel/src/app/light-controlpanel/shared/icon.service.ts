@@ -19,7 +19,7 @@ export class IconService {
 	};
 	constructor() { }
 
-	getIcon(IconName) {
-		return this.icons[IconName];
+	getIcon(name: string): string {
+		return this.icons[name];
 	}
 }

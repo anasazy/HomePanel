@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { IconService } from '../../shared/icon.service';
 import { PanelLightSourceFactoryService } from '../../shared/panel/panel-light-source-factory.service';
 import { HueLightSourceFactoryService } from '../../shared/hue/hue-light-source-factory.service';
+import { LightSource } from '../../models';
+import { HueGroup } from '../../shared/hue/hue-models';
 
 @Component({
 	selector: 'app-container-light-source',
@@ -11,33 +12,26 @@ import { HueLightSourceFactoryService } from '../../shared/hue/hue-light-source-
 })
 export class ContainerLightSourceComponent implements OnInit {
 
-	private panel_source;
-	private hue_source;
+	panelSource: LightSource;
+	hueSource: HueGroup;
 
-	@Input() source_id;
+	@Input() sourceID;
 
 	constructor(
-		private icon_service: IconService,
-		private panel_fact_service: PanelLightSourceFactoryService,
-		private hue_fact_service: HueLightSourceFactoryService
+		private readonly panelService: PanelLightSourceFactoryService,
+		private readonly hueService: HueLightSourceFactoryService
 	) { }
 
 	ngOnInit() {
 		this.resolveID();
-		this.getIcons();
 
-		console.log(this.panel_source);
-		console.log(this.hue_source);
+		console.log(this.panelSource);
+		console.log(this.hueSource);
 	}
 
 	private resolveID(): void {
-		this.panel_source = this.panel_fact_service.getLightSource(this.source_id);
-		this.hue_source = this.hue_fact_service.getHueLightSource(this.panel_source.hue_id,
-			this.panel_source.hue_type);
-	}
-
-	private getIcons(): void {
-
+		this.panelSource = this.panelService.getLightSource(this.sourceID);
+		this.hueSource = this.hueService.getHueLightSource(this.panelSource.hue_id, this.panelSource.hue_type);
 	}
 
 }

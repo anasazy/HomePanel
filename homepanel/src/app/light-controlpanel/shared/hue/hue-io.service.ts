@@ -9,8 +9,8 @@ export class HueIOService {
 
 	constructor() { }
 
-	sendLightState(LightID: number, State: object) {
-		const endpoint = 'http://philips-hue/api/' + this.apikey + '/lights/' + LightID + '/state';
+	sendLightState(LightID: number, State: object): void {
+		const endpoint = `http://philips-hue/api/${this.apikey}/lights/${LightID}/state`;
 
 		const request = new XMLHttpRequest();
 
@@ -19,8 +19,8 @@ export class HueIOService {
 		request.send(JSON.stringify(State));
 	}
 
-	fetchLightState(LightID: number): object {
-		const endpoint = 'http://philips-hue/api/' + this.apikey + '/lights/' + LightID;
+	fetchLightState(LightID: number) {
+		const endpoint = `http://philips-hue/api/${this.apikey}/lights/${LightID}`;
 
 		const request = new XMLHttpRequest();
 
@@ -34,19 +34,19 @@ export class HueIOService {
 		return state;
 	}
 
-	sendGroupState(GroupID: number, State: object) {
-		const endpoint = 'http://philips-hue/api/' + this.apikey + '/groups/' + GroupID + '/action';
+	sendGroupState(groupID: number, state) {
+		const endpoint = `http://philips-hue/api/${this.apikey}/groups/${groupID}/action`;
 
 		const request = new XMLHttpRequest();
 
 		request.open('PUT', endpoint, true);
 		request.setRequestHeader('Content-Type', 'application/json');
-		request.send(JSON.stringify(State));
-		console.log('[hueIO tx] group: ' + GroupID + ' state: ' + JSON.stringify(State));
+		request.send(JSON.stringify(state));
+		console.log(`[hueIO tx] group: ${groupID} state: ${JSON.stringify(state)}`);
 	}
 
-	fetchAllGroupStates(): object {
-		const endpoint = 'http://philips-hue/api/' + this.apikey + '/groups';
+	fetchAllGroupStates() {
+		const endpoint = `http://philips-hue/api/${this.apikey}/groups`;
 
 		const request = new XMLHttpRequest();
 
@@ -65,8 +65,8 @@ export class HueIOService {
 	}
 
 
-	fetchGroupState(GroupID: number): object {
-		const endpoint = 'http://philips-hue/api/' + this.apikey + '/groups/' + GroupID;
+	fetchGroupState(groupID: number) {
+		const endpoint = `http://philips-hue/api/${this.apikey}/groups/${groupID}`;
 
 		const request = new XMLHttpRequest();
 
@@ -76,7 +76,7 @@ export class HueIOService {
 
 		const response = JSON.parse(request.responseText);
 		const state = response.action;
-		console.log('[hueIO rx] group: ' + GroupID + ' state: ' + JSON.stringify(state));
+		console.log(`[hueIO rx] group: ${groupID} state: ${JSON.stringify(state)}`);
 		return state;
 	}
 

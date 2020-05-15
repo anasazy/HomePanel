@@ -1,26 +1,25 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
-
-
 @Component({
 	selector: 'app-switch',
 	templateUrl: './switch.component.html',
 	styleUrls: ['./switch.component.css']
 })
 export class SwitchComponent implements OnInit {
-	@Input() state;
-	@Input() icon_on;
+
 	@Input() icon_off;
+	@Input() icon_on;
 	@Input() id;
+	@Input() state;
 
 	@Output() switchChanged = new EventEmitter();
 
 	constructor() { }
 
-	ngOnInit() { }
+	ngOnInit(): void {
+	}
 
-
-	clickHandler(e) {
+	clickHandler(e): void {
 		this.toggleState();
 		const event = {
 			state: this.state,
@@ -31,17 +30,12 @@ export class SwitchComponent implements OnInit {
 		this.switchChanged.emit(event);
 	}
 
-	toggleState() {
+	toggleState(): void {
 		this.state = !this.state;
 	}
 
-
 	// Visuals
 	getIcon() {
-		if (this.state) {
-			return this.icon_on;
-		} else {
-			return this.icon_off;
-		}
+		return this.state ? this.icon_on : this.icon_off;
 	}
 }
