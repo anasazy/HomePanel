@@ -38,30 +38,30 @@ export class HueAsyncGroupControllerService {
 	}
 
 	syncBrightnessChanges(): void {
-		for (const id in this.changes.brightness) {
-			const brightness = this.changes.brightness[id];
-			const mesg = { on: true, bri: Number(brightness) };
-			this.sendHueLightState(Number(id), mesg);
-			delete this.changes.brightness[id];
-		}
+		Object.keys(this.changes.brightness).forEach(key => {
+			const brightness = this.changes.brightness[key];
+			const message = { on: true, bri: parseInt(brightness, 10) };
+			this.sendHueLightState(parseInt(key, 10), message);
+		});
+		this.changes.brightness = {};
 	}
 
 	syncColorChanges(): void {
-		for (const id in this.changes.color) {
-			const color = this.changes.color[id];
-			const mesg = { on: true, sat: color.sat, hue: color.hue };
-			this.sendHueLightState(Number(id), mesg);
-			delete this.changes.color[id];
-		}
+		Object.keys(this.changes.color).forEach(key => {
+			const color = this.changes.color[key];
+			const message = { on: true, sat: color.sat, hue: color.hue };
+			this.sendHueLightState(parseInt(key, 10), message);
+		});
+		this.changes.color = {};
 	}
 
 	sycOnChanges(): void {
-		for (const id in this.changes.on) {
-			const on = this.changes.on[id];
-			const mesg = { on };
-			this.sendHueLightState(Number(id), mesg);
-			delete this.changes.on[id];
-		}
+		Object.keys(this.changes.on).forEach(key => {
+			const on = this.changes.on[key];
+			const message = { on };
+			this.sendHueLightState(parseInt(key, 10), message);
+		});
+		this.changes.on = {};
 	}
 
 	// Set states
@@ -96,7 +96,7 @@ export class HueAsyncGroupControllerService {
 		return this.states[groupID].bri;
 	}
 
-	getColor(groupID: number) {
+	getColor(groupID: number): any {
 		return {};
 	}
 }
