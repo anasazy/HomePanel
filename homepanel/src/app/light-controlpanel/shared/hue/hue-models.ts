@@ -1,25 +1,25 @@
 export class HueGroup {
 
-	id;
-	controller;
+	id: number;
+	controller: any;
 
 	constructor() { }
 
 	// Set states
-	setOn() {
+	setOn(): void {
 		this.controller.setOn(this.id);
 	}
 
-	setOff() {
+	setOff(): void {
 		this.controller.setOff(this.id);
 	}
 
-	setBrightness(brightness: number) {
+	setBrightness(brightness: number): void {
 		this.controller.setBrightness(this.id, brightness);
 	}
 
-	setColor(HSVColor: object) {
-		this.controller.setColor(this.id, HSVColor);
+	setColor(hsvColor: any): void {
+		this.controller.setColor(this.id, hsvColor);
 	}
 
 	// Get states
@@ -31,7 +31,7 @@ export class HueGroup {
 		return this.controller.getBrightness(this.id);
 	}
 
-	getColor(): object {
+	getColor(): any {
 		return this.controller.getColor(this.id);
 	}
 }
