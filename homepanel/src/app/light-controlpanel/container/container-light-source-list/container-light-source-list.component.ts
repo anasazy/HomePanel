@@ -1,40 +1,46 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { IconService } from '../../shared/icon.service';
 import { PanelLightSourceFactoryService } from '../../shared/panel/panel-light-source-factory.service';
 
+export interface Tile {
+	icon: string;
+	label: string;
+	link: string;
+}
+
 @Component({
-  selector: 'app-container-light-source-list',
-  templateUrl: './container-light-source-list.component.html',
-  styleUrls: ['./container-light-source-list.component.css']
+	selector: 'app-container-light-source-list',
+	templateUrl: './container-light-source-list.component.html',
+	styleUrls: ['./container-light-source-list.component.css']
 })
-export class ContainerLightSourceListComponent implements OnInit {
-  @Input() IDs;
+export class ContainerLightSourceListComponent implements OnInit, OnChanges {
 
-  constructor(
-      private icon_service: IconService,
-      private panel_fact_service: PanelLightSourceFactoryService
-      ) { }
+	tiles: Tile[];
 
-  ngOnInit() {
+	@Input() IDs: number[];
 
-  }
+	constructor(
+		private readonly iconService: IconService,
+		private readonly panelService: PanelLightSourceFactoryService,
+	) { }
 
-  getTiles(){
-    let  tiles = [];
-    for (let ID of this.IDs) {
-        let tile = this.resolveID(ID);
-        tiles.push(tile);
-    }
+	ngOnInit(): void {
+	}
 
-    return tiles;    
-  }
-  
-  private resolveID(LightSourceID){
-      let ls = this.panel_fact_service.getLightSource(LightSourceID);
-      let icon = this.icon_service.getIcon(ls.icon_display);
-      return {"label": ls.label, "icon":icon, "link": LightSourceID + "/conf"};
-      
-  }
+	ngOnChanges(changes: SimpleChanges): void {
+		this.tiles = this.IDs.map(id => this.resolveID(id));
+	}
+
+	private resolveID(lightSourceID: number): Tile {
+		const lightSource = this.panelService.getLightSource(lightSourceID);
+		const icon = this.iconService.getIcon(lightSource.icon_display);
+
+		return {
+			label: lightSource.label,
+			icon,
+			link: lightSourceID + '/conf'
+		};
+	}
 
 }

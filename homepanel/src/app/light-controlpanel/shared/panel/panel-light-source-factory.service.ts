@@ -1,117 +1,105 @@
 import { Injectable } from '@angular/core';
 
+import { LightSource } from '../../models';
+
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class PanelLightSourceFactoryService {
-    light_sources = {
-                      1: {
-                          "type": "kitchen",
-                          "label": "Küche",
-                          "hue": {
-                                    "id": 3,
-                                    "type": "group"
-                                  },
-                          "icons": {
-                                    "display": "dp_kitchen",
-                                    "switch": {
-                                                "off": "sw_kitchen_off",
-                                                "on": "sw_kitchen_on"
-                                              }
-                                  }
-                        },
-                      2: {
-                          "type": "floor",
-                          "label": "Flur",
-                          "hue": {
-                                    "id": 2,
-                                    "type": "group"
-                                  },
-                          "icons": {
-                                      "display": "dp_floor",                         
-                                      "switch": {
-                                                  "off": "sw_floor_off",
-                                                  "on": "sw_floor_on"
-                                                }
-                                    }                                                            
-                        },
-                      3: {
-                          "type": "bedroom",
-                          "label": "Schlafzimmer",
-                          "hue": {
-                                    "id": 1,
-                                    "type": "group"
-                                  },
-                          "icons": {
-                                      "display": "dp_bedroom",                            
-                                      "switch": {
-                                                  "off": "sw_bedrom_off",
-                                                  "on": "sw_bedrom_on"
-                                                }
-                                    }                                                            
-                        }
-                  }
-  constructor() { }
 
+	lightSources = {
+		1: {
+			type: 'kitchen',
+			label: 'Küche',
+			hue: {
+				id: 3,
+				type: 'group'
+			},
+			icons: {
+				display: 'dp_kitchen',
+				switch: {
+					off: 'sw_kitchen_off',
+					on: 'sw_kitchen_on'
+				}
+			}
+		},
+		2: {
+			type: 'floor',
+			label: 'Flur',
+			hue: {
+				id: 2,
+				type: 'group'
+			},
+			icons: {
+				display: 'dp_floor',
+				switch: {
+					off: 'sw_floor_off',
+					on: 'sw_floor_on'
+				}
+			}
+		},
+		3: {
+			type: 'bedroom',
+			label: 'Schlafzimmer',
+			hue: {
+				id: 1,
+				type: 'group'
+			},
+			icons: {
+				display: 'dp_bedroom',
+				switch: {
+					off: 'sw_bedrom_off',
+					on: 'sw_bedrom_on'
+				}
+			}
+		}
+	};
 
-  private getItemType(LightSourceID: number): string{
-     return this.light_sources[LightSourceID]["type"];      
-  }
+	constructor() { }
 
-  private getItemLabel(LightSourceID: number): string {
-    return this.light_sources[LightSourceID]["label"];
-  }
+	private getItemType(lightSourceID: number): string {
+		return this.lightSources[lightSourceID].type;
+	}
 
-  private getHueID(LightSourceID: number): number{
-     return this.light_sources[LightSourceID]["hue"]["id"];
-  }
+	private getItemLabel(lightSourceID: number): string {
+		return this.lightSources[lightSourceID].label;
+	}
 
-  private getHueType(LightSourceID: number): string {
-    return this.light_sources[LightSourceID]["hue"]["type"];
-  }
+	private getHueID(lightSourceID: number): number {
+		return this.lightSources[lightSourceID].hue.id;
+	}
 
-  private getIconDisplay(LightSourceID: number): string {
-    return this.light_sources[LightSourceID]["icons"]["display"];
-  }
+	private getHueType(lightSourceID: number): string {
+		return this.lightSources[lightSourceID].hue.type;
+	}
 
-  private getIconSwitchOff(LightSourceID: number): string {
-    return this.light_sources[LightSourceID]["icons"]["switch"]["off"];
-  }
+	private getIconDisplay(lightSourceID: number): string {
+		return this.lightSources[lightSourceID].icons.display;
+	}
 
-  private getIconSwitchOn(LightSourceID: number): string {
-    return this.light_sources[LightSourceID]["icons"]["switch"]["on"];
-  }
+	private getIconSwitchOff(lightSourceID: number): string {
+		return this.lightSources[lightSourceID].icons.switch.off;
+	}
 
-  getLightSource(LightSourceID: number): LightSource{
-    let ls = new LightSource();
-    
-    ls.id = LightSourceID;
-    ls.type = this.getItemType(LightSourceID);
-    ls.label = this.getItemLabel(LightSourceID);
+	private getIconSwitchOn(lightSourceID: number): string {
+		return this.lightSources[lightSourceID].icons.switch.on;
+	}
 
-    ls.hue_id = this.getHueID(LightSourceID);
-    ls.hue_type = this.getHueType(LightSourceID);
+	getLightSource(lightSourceID: number): LightSource {
+		const ls = new LightSource();
 
-    ls.icon_display = this.getIconDisplay(LightSourceID);
-    ls.icon_switch_off = this.getIconSwitchOff(LightSourceID);
-    ls.icon_switch_on = this.getIconSwitchOn(LightSourceID);
-    
-    return ls;
-  }
+		ls.id = lightSourceID;
+		ls.type = this.getItemType(lightSourceID);
+		ls.label = this.getItemLabel(lightSourceID);
 
-}
+		ls.hue_id = this.getHueID(lightSourceID);
+		ls.hue_type = this.getHueType(lightSourceID);
 
-class LightSource{
-    constructor() { }
+		ls.icon_display = this.getIconDisplay(lightSourceID);
+		ls.icon_switch_off = this.getIconSwitchOff(lightSourceID);
+		ls.icon_switch_on = this.getIconSwitchOn(lightSourceID);
 
-    id;
-    type;
-    label;
+		return ls;
+	}
 
-    hue_id;
-    hue_type;
-
-    icon_display;
-    icon_switch_off;
-    icon_switch_on;
 }

@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule } from '@angular/material/list';
 
-//Components
+// Components
 import { SwitchComponent } from './components/switch/switch.component';
 import { ColorPickerComponent } from './components/color-picker/color-picker.component';
 import { DimmerComponent } from './components/dimmer/dimmer.component';
@@ -32,49 +32,49 @@ import { PageListComponent } from './pages/page-list/page-list.component';
 import { PageSettingsComponent } from './pages/page-settings/page-settings.component';
 
 const routes: Routes = [
-  {
-    path: 'dashboard',
-    component: PageDashboardComponent
-  },
-  {
-    path: 'sources/:id/conf',
-    component: PageSettingsComponent
-  },
-  {
-    path: 'sources',
-    component: PageListComponent
-  },
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full'
-  }
+	{
+		path: 'dashboard',
+		component: PageDashboardComponent
+	},
+	{
+		path: 'sources/:id/conf',
+		component: PageSettingsComponent
+	},
+	{
+		path: 'sources',
+		component: PageListComponent
+	},
+	{
+		path: '',
+		redirectTo: 'dashboard',
+		pathMatch: 'full'
+	}
 ];
 
 @NgModule({
-  declarations: [
-    SwitchComponent,
-    DimmerComponent,
-    ColorPickerComponent,
-    PageDashboardComponent,
-    ContainerLightSourceComponent,
-    ContainerLightSourceSwitchComponent,
-    ContainerLightSourceDimmerComponent,
-    ContainerLightSourceColorPickerComponent,
-    SelectButtonComponent,
-    ContainerLightSourceLabelComponent,
-    MenuButtonComponent,
-    PageListComponent,
-    ContainerLightSourceListComponent,
-    LightSourceTileComponent,
-    PageSettingsComponent,
-  ],
-  providers: [],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    MatGridListModule,
-    MatListModule
-  ]
+	declarations: [
+		SwitchComponent,
+		DimmerComponent,
+		ColorPickerComponent,
+		PageDashboardComponent,
+		ContainerLightSourceComponent,
+		ContainerLightSourceSwitchComponent,
+		ContainerLightSourceDimmerComponent,
+		ContainerLightSourceColorPickerComponent,
+		SelectButtonComponent,
+		ContainerLightSourceLabelComponent,
+		MenuButtonComponent,
+		PageListComponent,
+		ContainerLightSourceListComponent,
+		LightSourceTileComponent,
+		PageSettingsComponent,
+	],
+	providers: [],
+	imports: [
+		CommonModule,
+		RouterModule.forChild(routes),
+		MatGridListModule,
+		MatListModule
+	]
 })
 export class LightControlpanelModule { }

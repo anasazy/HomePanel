@@ -1,21 +1,20 @@
-.slider{
-    margin: 15px;
-    height: 300px;
-    width: 60px;
+.slider {
+	margin: 15px;
+	height: 300px;
+	width: 60px;
 
-    border-radius: 15px;
+	border-radius: 15px;
 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	outline: none;
 }
 
-
-.slider::-moz-range-track{
-    background-color: transparent;
+.slider::-moz-range-track {
+	background-color: transparent;
 }
 
-.slider::-moz-range-thumb{
-    border-color: transparent;
-    background-color: transparent;
+.slider::-moz-range-thumb {
+	border-color: transparent;
+	background-color: transparent;
 }

@@ -1,1 +1,9 @@
-<input orient="vertical" class="slider" [ngStyle]="{'background': getRangeBarCSS()}" type="range" [min]="rangeMin" [max]="rangeMax" [value]="brightness" (input)="changeHandler($event.target.value)">
+<input
+	orient="vertical"
+	class="slider"
+	[ngStyle]="{'background': getRangeBarCSS()}"
+	type="range"
+	[min]="rangeMin"
+	[max]="rangeMax"
+	[value]="brightness"
+	(input)="changeHandler($event.target.value)">

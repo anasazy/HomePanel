@@ -1,48 +1,49 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
-
+export interface SwitchChangeEvent {
+	id: number;
+	source: string;
+	state: any;
+	type: string;
+}
 
 @Component({
-  selector: 'app-switch',
-  templateUrl: './switch.component.html',
-  styleUrls: ['./switch.component.css']
+	selector: 'app-switch',
+	templateUrl: './switch.component.html',
+	styleUrls: ['./switch.component.css']
 })
 export class SwitchComponent implements OnInit {
-  @Input() state;
-  @Input() icon_on;
-  @Input() icon_off;
-  @Input() id;
 
-  @Output() switchChanged = new EventEmitter()
+	@Input() iconOff: string;
+	@Input() iconOn: string;
+	@Input() id: number;
+	@Input() state: any;
 
-  constructor() {}
+	@Output() switchChanged = new EventEmitter<SwitchChangeEvent>();
 
-  ngOnInit() {}
+	constructor() { }
 
+	ngOnInit(): void {
+	}
 
-  clickHandler(e){
-      this.toggleState();
-      let event = {
-        "state": this.state,
-        "type": "SwitchChangedEvent",
-        "source": "SwitchComponent",
-        "id": this.id
-      }
-      this.switchChanged.emit(event)
-  }
+	clickHandler(e): void {
+		this.toggleState();
 
-  toggleState(){
-      this.state = !this.state;
-  }
+		const event: SwitchChangeEvent = {
+			id: this.id,
+			source: 'SwitchComponent',
+			state: this.state,
+			type: 'SwitchChangedEvent',
+		};
+		this.switchChanged.emit(event);
+	}
 
+	toggleState(): void {
+		this.state = !this.state;
+	}
 
-  // Visuals
-  getIcon(){
-      if (this.state) {
-          return this.icon_on;
-      }
-      else {
-          return this.icon_off;
-      }
-  }
+	// Visuals
+	getIcon(): string {
+		return this.state ? this.iconOn : this.iconOff;
+	}
 }

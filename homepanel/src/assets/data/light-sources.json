@@ -1,0 +1,50 @@
+[
+  {
+    "hue": {
+      "id": 3,
+      "type": "group"
+    },
+    "icons": {
+      "display": "dp_kitchen",
+      "switch": {
+        "off": "sw_kitchen_off",
+        "on": "sw_kitchen_on"
+      }
+    },
+    "id": 1,
+    "label": "Küche",
+    "type": "kitchen"
+  },
+  {
+    "hue": {
+      "id": 2,
+      "type": "group"
+    },
+    "icons": {
+      "display": "dp_floor",
+      "switch": {
+        "off": "sw_floor_off",
+        "on": "sw_floor_on"
+      }
+    },
+    "id": 2,
+    "label": "Flur",
+    "type": "floor"
+  },
+  {
+    "hue": {
+      "id": 1,
+      "type": "group"
+    },
+    "icons": {
+      "display": "dp_bedroom",
+      "switch": {
+        "off": "sw_bedrom_off",
+        "on": "sw_bedrom_on"
+      }
+    },
+    "id": 3,
+    "label": "Schlafzimmer",
+    "type": "bedroom"
+  }
+]

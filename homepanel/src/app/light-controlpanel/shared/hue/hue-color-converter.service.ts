@@ -1,27 +1,34 @@
 import { Injectable } from '@angular/core';
 
+export interface CIE {
+	bri: number;
+	hue: number;
+	sat: number;
+}
+
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class HueColorConverterService {
 
-  constructor() { }
+	constructor() { }
 
-    hsv_to_cie(hue: number, saturation: number, ligthness: number): object{
-        let cie = {};
-        cie["hue"] = Math.floor(65535 * hue / 360);
-        cie["sat"] = Math.floor(saturation /100 * 255);
-        cie["bri"] = Math.floor(ligthness /100 * 255);
+	hsv2cie(hue: number, saturation: number, ligthness: number): CIE {
+		const cie = {
+			bri: Math.floor(ligthness / 100 * 255),
+			hue: Math.floor(65535 * hue / 360),
+			sat: Math.floor(saturation / 100 * 255),
+		};
 
-        if (cie["sat"] > 254) {
-            cie["sat"] = 254
-        }
+		if (cie.sat > 254) {
+			cie.sat = 254;
+		}
 
-        if (cie["bri"] > 254) {
-            cie["bri"] = 254
-        }
+		if (cie.bri > 254) {
+			cie.bri = 254;
+		}
 
-        return cie;
-    }
+		return cie;
+	}
 
 }

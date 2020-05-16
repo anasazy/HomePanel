@@ -1,40 +1,39 @@
-<div class="header">    
-    <app-menu-button
-    [icon]="'/assets/img/nav/menu.png'"
-    [link]="'/light/sources'">
-    </app-menu-button>
-<div class="selectionBar">
-    <app-select-button
-    [label] = "'Switches'"
-    [isHighlighted]="isShowingSwitches"
-    (buttonSelected)=handleShowSwitches()>
-    </app-select-button>
-    <app-select-button
-    [label] = "'Brightness'"
-    [isHighlighted]="isShowingBrightness"
-    (buttonSelected)=handleShowBrigthness()>
-    </app-select-button>
+<div class="header">
+	<app-menu-button
+		icon="/assets/img/nav/menu.png"
+		link="/light/sources">
+	</app-menu-button>
+	<div class="selectionBar">
+		<app-select-button
+			label="Switches"
+			[isHighlighted]="isShowingSwitches"
+			(buttonSelected)="handleShowSwitches()">
+		</app-select-button>
+		<app-select-button
+			label="Brightness"
+			[isHighlighted]="isShowingBrightness"
+			(buttonSelected)="handleShowBrigthness()">
+		</app-select-button>
+	</div>
 </div>
-</div>
-
 
 <mat-grid-list *ngIf="isShowingSwitches" cols="3" [style.background]="'black'">
-    <mat-grid-tile *ngFor="let ls of IDs" >
-        <div>
-            <app-container-light-source-switch
-            [source_id]="ls">
-            </app-container-light-source-switch>      
-        </div>
-    </mat-grid-tile>
-</mat-grid-list>    
+	<mat-grid-tile *ngFor="let id of IDs">
+		<div>
+			<app-container-light-source-switch
+				[sourceID]="id">
+			</app-container-light-source-switch>
+		</div>
+	</mat-grid-tile>
+</mat-grid-list>
 
 <mat-grid-list *ngIf="isShowingBrightness" cols="3" [style.background]="'black'">
-    <mat-grid-tile *ngFor="let ls of IDs" >
-            <app-container-light-source-dimmer
-            [source_id]="ls">
-            </app-container-light-source-dimmer> 
-            <app-container-light-source-label
-            [source_id]="ls">
-            </app-container-light-source-label>     
-    </mat-grid-tile>
+	<mat-grid-tile *ngFor="let id of IDs">
+		<app-container-light-source-dimmer
+			[sourceID]="id">
+		</app-container-light-source-dimmer>
+		<app-container-light-source-label
+			[sourceID]="id">
+		</app-container-light-source-label>
+	</mat-grid-tile>
 </mat-grid-list>
