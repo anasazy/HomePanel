@@ -1,0 +1,70 @@
+{
+  "state": {
+    "on": false,
+    "bri": 254,
+    "hue": 8402,
+    "sat": 140,
+    "effect": "none",
+    "xy": [
+      0.4575,
+      0.4099
+    ],
+    "ct": 366,
+    "alert": "select",
+    "colormode": "xy",
+    "mode": "homeautomation",
+    "reachable": true
+  },
+  "swupdate": {
+    "state": "noupdates",
+    "lastinstall": "2020-03-03T13:52:29"
+  },
+  "type": "Extended color light",
+  "name": "Hue color lamp 3",
+  "modelid": "LCT015",
+  "manufacturername": "Signify Netherlands B.V.",
+  "productname": "Hue color lamp",
+  "capabilities": {
+    "certified": true,
+    "control": {
+      "mindimlevel": 1000,
+      "maxlumen": 806,
+      "colorgamuttype": "C",
+      "colorgamut": [
+        [
+          0.6915,
+          0.3083
+        ],
+        [
+          0.1700,
+          0.7000
+        ],
+        [
+          0.1532,
+          0.0475
+        ]
+      ],
+      "ct": {
+        "min": 153,
+        "max": 500
+      }
+    },
+    "streaming": {
+      "renderer": true,
+      "proxy": true
+    }
+  },
+  "config": {
+    "archetype": "sultanbulb",
+    "function": "mixed",
+    "direction": "omnidirectional",
+    "startup": {
+      "mode": "safety",
+      "configured": true
+    }
+  },
+  "uniqueid": "00:17:88:01:04:d2:c3:c2-0b",
+  "swversion": "1.50.2_r30933",
+  "swconfigid": "772B0E5E",
+  "productid": "Philips-LCT015-1-A19ECLv5"
+}
