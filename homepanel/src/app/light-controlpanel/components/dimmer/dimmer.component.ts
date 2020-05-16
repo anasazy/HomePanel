@@ -1,5 +1,12 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
+export interface BrightnessChangeEvent {
+	brightness: number;
+	id: number;
+	percentage: number;
+	source: string;
+	type: string;
+}
 
 @Component({
 	selector: 'app-dimmer',
@@ -12,10 +19,10 @@ export class DimmerComponent implements OnInit {
 	rangeMax = 254;
 	rangeMin = 1;
 
-	@Input() brightness;
-	@Input() id;
+	@Input() brightness: number;
+	@Input() id: number;
 
-	@Output() brightnessChanged = new EventEmitter();
+	@Output() brightnessChanged = new EventEmitter<BrightnessChangeEvent>();
 
 	constructor() { }
 
@@ -24,7 +31,8 @@ export class DimmerComponent implements OnInit {
 
 	changeHandler(value): void {
 		this.updateBrightness(value);
-		const event = {
+
+		const event: BrightnessChangeEvent = {
 			brightness: this.brightness,
 			id: this.id,
 			percentage: this.percentage,

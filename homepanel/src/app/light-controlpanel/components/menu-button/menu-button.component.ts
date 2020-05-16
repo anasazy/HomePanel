@@ -7,8 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MenuButtonComponent implements OnInit {
 
-	@Input() icon;
-	@Input() link;
+	@Input() icon: string;
+	@Input() link: string;
 
 	constructor() { }
 

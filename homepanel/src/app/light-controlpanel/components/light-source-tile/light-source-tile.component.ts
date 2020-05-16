@@ -7,13 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LightSourceTileComponent implements OnInit {
 
-	@Input() icon;
-	@Input() label;
-	@Input() link;
+	@Input() icon: string;
+	@Input() label: string;
+	@Input() link: string;
 
 	constructor() { }
 
-	ngOnInit() {
+	ngOnInit(): void {
 	}
 
 }

@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { SwitchComponent } from '../../components/switch/switch.component';
-
 import { IconService } from '../../shared/icon.service';
 import { PanelLightSourceFactoryService } from '../../shared/panel/panel-light-source-factory.service';
 import { HueLightSourceFactoryService } from '../../shared/hue/hue-light-source-factory.service';
+import { HueGroup } from '../../shared/hue/hue-models';
+import { LightSource } from '../../models';
 
 @Component({
 	selector: 'app-container-light-source-switch',
@@ -13,12 +13,12 @@ import { HueLightSourceFactoryService } from '../../shared/hue/hue-light-source-
 })
 export class ContainerLightSourceSwitchComponent implements OnInit {
 
-	hueSource;
-	iconSwitchOff;
-	iconSwitchOn;
-	panelSource;
+	hueSource: HueGroup;
+	iconSwitchOff: string;
+	iconSwitchOn: string;
+	panelSource: LightSource;
 
-	@Input() sourceID;
+	@Input() sourceID: number;
 
 	constructor(
 		private readonly iconService: IconService,
@@ -26,7 +26,7 @@ export class ContainerLightSourceSwitchComponent implements OnInit {
 		private readonly hueService: HueLightSourceFactoryService,
 	) { }
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.resolveID();
 		this.getIcons();
 	}

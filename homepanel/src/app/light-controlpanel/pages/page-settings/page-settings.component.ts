@@ -8,7 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PageSettingsComponent implements OnInit {
 
-	lightSourceId;
+	lightSourceId: number;
 
 	constructor(
 		private readonly route: ActivatedRoute,

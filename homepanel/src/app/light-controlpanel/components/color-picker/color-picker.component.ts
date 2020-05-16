@@ -2,6 +2,15 @@ import { Component, OnInit, Input, Output, EventEmitter, NgZone } from '@angular
 
 import iro from '@jaames/iro';
 
+export interface ColorChangeEvent {
+	color: {
+		rgb: any;
+		hsv: any;
+	};
+	id: number;
+	source: string;
+	type: string;
+}
 @Component({
 	selector: 'app-color-picker',
 	templateUrl: './color-picker.component.html',
@@ -9,14 +18,14 @@ import iro from '@jaames/iro';
 })
 export class ColorPickerComponent implements OnInit {
 
-	colorPicker = null;
-	hexColor = null;
-	hsvColor = null;
-	rgbColor = null;
+	colorPicker: any = null;
+	hexColor: any = null;
+	hsvColor: any = null;
+	rgbColor: any = null;
 
-	@Input() id;
+	@Input() id: number;
 
-	@Output() colorChanged = new EventEmitter();
+	@Output() colorChanged = new EventEmitter<ColorChangeEvent>();
 
 	constructor(
 		private readonly ngZone: NgZone
@@ -37,11 +46,12 @@ export class ColorPickerComponent implements OnInit {
 		this.hexColor = color.hexString;
 		this.hsvColor = color.hsv;
 		this.rgbColor = color.rgb;
-		const event = {
+
+		const event: ColorChangeEvent = {
 			color: { rgb: this.rgbColor, hsv: this.hsvColor },
-			type: 'ColorChangedEvent',
+			id: this.id,
 			source: 'ColorPickerComponent',
-			id: this.id
+			type: 'ColorChangedEvent',
 		};
 		this.colorChanged.emit(event);
 	}

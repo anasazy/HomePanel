@@ -3,6 +3,12 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { IconService } from '../../shared/icon.service';
 import { PanelLightSourceFactoryService } from '../../shared/panel/panel-light-source-factory.service';
 
+export interface Tile {
+	icon: string;
+	label: string;
+	link: string;
+}
+
 @Component({
 	selector: 'app-container-light-source-list',
 	templateUrl: './container-light-source-list.component.html',
@@ -10,7 +16,7 @@ import { PanelLightSourceFactoryService } from '../../shared/panel/panel-light-s
 })
 export class ContainerLightSourceListComponent implements OnInit, OnChanges {
 
-	tiles;
+	tiles: Tile[];
 
 	@Input() IDs: number[];
 
@@ -19,15 +25,14 @@ export class ContainerLightSourceListComponent implements OnInit, OnChanges {
 		private readonly panelService: PanelLightSourceFactoryService,
 	) { }
 
-	ngOnInit() {
-
+	ngOnInit(): void {
 	}
 
 	ngOnChanges(changes: SimpleChanges): void {
 		this.tiles = this.IDs.map(id => this.resolveID(id));
 	}
 
-	private resolveID(lightSourceID: number) {
+	private resolveID(lightSourceID: number): Tile {
 		const lightSource = this.panelService.getLightSource(lightSourceID);
 		const icon = this.iconService.getIcon(lightSource.icon_display);
 

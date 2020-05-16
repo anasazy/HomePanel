@@ -1,5 +1,12 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
+export interface SwitchChangeEvent {
+	id: number;
+	source: string;
+	state: any;
+	type: string;
+}
+
 @Component({
 	selector: 'app-switch',
 	templateUrl: './switch.component.html',
@@ -7,12 +14,12 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 })
 export class SwitchComponent implements OnInit {
 
-	@Input() icon_off;
-	@Input() icon_on;
-	@Input() id;
-	@Input() state;
+	@Input() iconOff: string;
+	@Input() iconOn: string;
+	@Input() id: number;
+	@Input() state: any;
 
-	@Output() switchChanged = new EventEmitter();
+	@Output() switchChanged = new EventEmitter<SwitchChangeEvent>();
 
 	constructor() { }
 
@@ -21,11 +28,12 @@ export class SwitchComponent implements OnInit {
 
 	clickHandler(e): void {
 		this.toggleState();
-		const event = {
+
+		const event: SwitchChangeEvent = {
+			id: this.id,
+			source: 'SwitchComponent',
 			state: this.state,
 			type: 'SwitchChangedEvent',
-			source: 'SwitchComponent',
-			id: this.id
 		};
 		this.switchChanged.emit(event);
 	}
@@ -35,7 +43,7 @@ export class SwitchComponent implements OnInit {
 	}
 
 	// Visuals
-	getIcon() {
-		return this.state ? this.icon_on : this.icon_off;
+	getIcon(): string {
+		return this.state ? this.iconOn : this.iconOff;
 	}
 }

@@ -15,14 +15,14 @@ export class ContainerLightSourceComponent implements OnInit {
 	panelSource: LightSource;
 	hueSource: HueGroup;
 
-	@Input() sourceID;
+	@Input() sourceID: number;
 
 	constructor(
 		private readonly panelService: PanelLightSourceFactoryService,
 		private readonly hueService: HueLightSourceFactoryService
 	) { }
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.resolveID();
 
 		console.log(this.panelSource);

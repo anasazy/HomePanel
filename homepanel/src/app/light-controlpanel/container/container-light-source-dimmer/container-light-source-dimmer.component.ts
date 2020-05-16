@@ -15,19 +15,19 @@ export class ContainerLightSourceDimmerComponent implements OnInit {
 	panelSource: LightSource;
 	hueSource: HueGroup;
 
-	@Input() sourceID;
+	@Input() sourceID: number;
 
 	constructor(
 		private readonly panelService: PanelLightSourceFactoryService,
 		private readonly hueService: HueLightSourceFactoryService,
 	) { }
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.panelSource = this.panelService.getLightSource(this.sourceID);
 		this.hueSource = this.hueService.getHueLightSource(this.panelSource.hue_id, this.panelSource.hue_type);
 	}
 
-	handleBrightnessChanged(e) {
+	handleBrightnessChanged(e): void {
 		const brightness = e.brightness;
 		this.hueSource.setBrightness(brightness);
 	}

@@ -12,13 +12,13 @@ export class ContainerLightSourceLabelComponent implements OnInit {
 
 	lightSource: LightSource;
 
-	@Input() sourceID;
+	@Input() sourceID: number;
 
 	constructor(
 		private readonly panelService: PanelLightSourceFactoryService,
 	) { }
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.lightSource = this.panelService.getLightSource(this.sourceID);
 	}
 

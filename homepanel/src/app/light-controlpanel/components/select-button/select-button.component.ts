@@ -7,8 +7,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SelectButtonComponent implements OnInit {
 
-	@Input() label;
-	@Input() isHighlighted;
+	@Input() label: string;
+	@Input() isHighlighted: boolean;
 
 	@Output() buttonSelected = new EventEmitter();
 
