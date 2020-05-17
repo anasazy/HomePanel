@@ -1,83 +1,60 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { Observable } from 'rxjs';
+import { map, pluck } from 'rxjs/operators';
+
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class HueIOService {
 
-    apikey = "";
+	private readonly apiKey = environment.apiKey;
 
-  constructor() { }
+	constructor(
+		private readonly http: HttpClient,
+	) { }
 
-    sendLightState(LightID: number, State: object){
-        let endpoint = "http://philips-hue/api/" + this.apikey + "/lights/" + LightID + "/state";
+	sendLightState(lightID: number, state): Observable<any> {
+		const url = `http://philips-hue/api/${this.apiKey}/lights/${lightID}/state`;
+		const headers = new HttpHeaders().append('Content-Type', 'application/json');
+		return this.http.put(url, state, { headers });
+	}
 
-        let request = new XMLHttpRequest();
+	fetchLightState(lightID: number): Observable<any> {
+		const url = `http://philips-hue/api/${this.apiKey}/lights/${lightID}`;
+		const headers = new HttpHeaders().append('Content-Type', 'application/json');
+		return this.http.get(url, { headers });
+	}
 
-        request.open('PUT', endpoint, true);
-        request.setRequestHeader("Content-Type", "application/json");
-        request.send(JSON.stringify(State));
-    }
+	sendGroupState(groupID: number, state): Observable<any> {
+		const url = `http://philips-hue/api/${this.apiKey}/groups/${groupID}/action`;
+		const headers = new HttpHeaders().append('Content-Type', 'application/json');
+		return this.http.put(url, state, { headers });
+	}
 
-    fetchLightState(LightID: number): object{
-        let endpoint = "http://philips-hue/api/" + this.apikey + "/lights/" + LightID;
+	fetchAllGroupStates(): Observable<any> {
+		const url = `http://philips-hue/api/${this.apiKey}/groups`;
+		const headers = new HttpHeaders().append('Content-Type', 'application/json');
+		return this.http.get(url, { headers }).pipe(
+			map(response => {
+				const states: any = {};
+				Object.keys(response).forEach(key => {
+					states[key] = response[key].action;
+				});
+				return states;
+			}),
+		);
+	}
 
-        let request = new XMLHttpRequest();
-
-        request.open('GET', endpoint, false);
-        request.overrideMimeType("application/json");
-        request.send(null);
-
-        let response = JSON.parse(request.responseText);
-        let state = response["state"];
-
-        return state;
-    }
-
-    sendGroupState(GroupID: number, State: object){
-        let endpoint = "http://philips-hue/api/" + this.apikey + "/groups/" + GroupID + "/action";
-
-        let request = new XMLHttpRequest();
-
-        request.open('PUT', endpoint, true);
-        request.setRequestHeader("Content-Type", "application/json");
-        request.send(JSON.stringify(State));
-        console.log("[hueIO tx] group: "+ GroupID+ " state: " +JSON.stringify(State))
-    }
-
-    fetchAllGroupStates(): object{
-        let endpoint = "http://philips-hue/api/" + this.apikey + "/groups";
-
-        let request = new XMLHttpRequest();
-
-        request.open('GET', endpoint, false);
-        request.overrideMimeType("application/json");
-        request.send(null);
-
-        let response = JSON.parse(request.responseText);
-        let states = {};
-
-        for (var room in response) {
-          states[room] = response[room]["action"];
-        }
-        console.log("[hueIO rx] group: all states");
-        return states; 
-    }
-
-
-    fetchGroupState(GroupID: number): object{
-        let endpoint = "http://philips-hue/api/" + this.apikey + "/groups/" + GroupID;
-
-        let request = new XMLHttpRequest();
-
-        request.open('GET', endpoint, false);
-        request.overrideMimeType("application/json");
-        request.send(null);
-
-        let response = JSON.parse(request.responseText);
-        let state = response["action"];
-        console.log("[hueIO rx] group: "+ GroupID+ " state: " +JSON.stringify(state))
-        return state;
-    }
+	fetchGroupState(groupID: number): Observable<any> {
+		const url = `http://philips-hue/api/${this.apiKey}/groups/${groupID}`;
+		const headers = new HttpHeaders().append('Content-Type', 'application/json');
+		return this.http.get(url, { headers }).pipe(
+			pluck('action'),
+		);
+	}
 
 }

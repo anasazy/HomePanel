@@ -1,9 +1,9 @@
 <mat-grid-list cols="5" [style.background]="'black'">
-    <mat-grid-tile *ngFor="let tile of getTiles()" >
-        <app-light-source-tile
-        [label]="tile.label"
-        [icon]="tile.icon"
-        [link]="tile.link">
-        </app-light-source-tile>    
-    </mat-grid-tile>
-</mat-grid-list>   
+	<mat-grid-tile *ngFor="let tile of tiles">
+		<app-light-source-tile
+			[label]="tile.label"
+			[icon]="tile.icon"
+			[link]="tile.link">
+		</app-light-source-tile>
+	</mat-grid-tile>
+</mat-grid-list>

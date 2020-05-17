@@ -1,54 +1,58 @@
 import { Component, OnInit, Input, Output, EventEmitter, NgZone } from '@angular/core';
 
-import { iro } from '@jaames/iro/dist/iro';
-declare var iro: any;
+import iro from '@jaames/iro';
 
+export interface ColorChangeEvent {
+	color: {
+		rgb: any;
+		hsv: any;
+	};
+	id: number;
+	source: string;
+	type: string;
+}
 @Component({
-  selector: 'app-color-picker',
-  templateUrl: './color-picker.component.html',
-  styleUrls: ['./color-picker.component.css']
+	selector: 'app-color-picker',
+	templateUrl: './color-picker.component.html',
+	styleUrls: ['./color-picker.component.css']
 })
 export class ColorPickerComponent implements OnInit {
 
-  @Input() id;
-  @Output() colorChanged = new EventEmitter();
+	colorPicker: any = null;
+	hexColor: any = null;
+	hsvColor: any = null;
+	rgbColor: any = null;
 
-  colorPicker = null;
-  ngZone = null;
+	@Input() id: number;
 
-  hexColor = null;
-  rgbColor = null;
-  hsvColor = null;
+	@Output() colorChanged = new EventEmitter<ColorChangeEvent>();
 
-  constructor(ngZone: NgZone) {
-    this.ngZone = ngZone;
-  }
+	constructor(
+		private readonly ngZone: NgZone
+	) { }
 
-  ngOnInit() {
-    this.colorPicker = new iro.ColorPicker('#picker', {
-      layout: [
-        {
-          component: iro.ui.Wheel
-        }
-      ]
-    });
-    this.colorPicker.on('color:change', (color, changes) => this.ngZone.run(() => this.onColorChange(color, changes)));
-  }
+	ngOnInit(): void {
+		this.colorPicker = new iro.ColorPicker('#picker', {
+			layout: [
+				{
+					component: iro.ui.Wheel
+				}
+			]
+		});
+		this.colorPicker.on('color:change', (color, changes) => this.ngZone.run(() => this.onColorChange(color, changes)));
+	}
 
-  onColorChange(color, changes) {
-    this.hexColor = color.hexString;
-    this.hsvColor = color.hsv;
-    this.rgbColor = color.rgb;
+	onColorChange(color, changes): void {
+		this.hexColor = color.hexString;
+		this.hsvColor = color.hsv;
+		this.rgbColor = color.rgb;
 
-    let event = {
-      color: {
-        rgb: this.rgbColor,
-        hsv: this.hsvColor
-      },
-      type: 'ColorChangedEvent',
-      source: 'ColorPickerComponent',
-      id: this.id
-    };
-    this.colorChanged.emit(event);
-  }
+		const event: ColorChangeEvent = {
+			color: { rgb: this.rgbColor, hsv: this.hsvColor },
+			id: this.id,
+			source: 'ColorPickerComponent',
+			type: 'ColorChangedEvent',
+		};
+		this.colorChanged.emit(event);
+	}
 }

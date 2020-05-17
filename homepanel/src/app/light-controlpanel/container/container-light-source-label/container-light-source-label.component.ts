@@ -1,26 +1,25 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { PanelLightSourceFactoryService } from '../../shared/panel/panel-light-source-factory.service';
+import { LightSource } from '../../models';
 
 @Component({
-  selector: 'app-container-light-source-label',
-  templateUrl: './container-light-source-label.component.html',
-  styleUrls: ['./container-light-source-label.component.css']
+	selector: 'app-container-light-source-label',
+	templateUrl: './container-light-source-label.component.html',
+	styleUrls: ['./container-light-source-label.component.css']
 })
 export class ContainerLightSourceLabelComponent implements OnInit {
 
-  @Input() source_id;
+	lightSource: LightSource;
 
-  light_source;
+	@Input() sourceID: number;
 
-  constructor(private panel_fact_service: PanelLightSourceFactoryService) { }
+	constructor(
+		private readonly panelService: PanelLightSourceFactoryService,
+	) { }
 
-  ngOnInit() {
-    this.resolveID();
-  }
-
-  resolveID() {
-    this.light_source = this.panel_fact_service.getLightSource(this.source_id);
-  }
+	ngOnInit(): void {
+		this.lightSource = this.panelService.getLightSource(this.sourceID);
+	}
 
 }
