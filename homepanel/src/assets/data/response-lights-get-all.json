@@ -1,282 +1,282 @@
 {
   "1": {
-    "state": {
-      "on": true,
-      "bri": 254,
-      "hue": 8402,
-      "sat": 140,
-      "effect": "none",
-      "xy": [
-        0.4575,
-        0.4099
-      ],
-      "ct": 366,
-      "alert": "none",
-      "colormode": "xy",
-      "mode": "homeautomation",
-      "reachable": true
-    },
-    "swupdate": {
-      "state": "noupdates",
-      "lastinstall": "2020-03-03T13:52:40"
-    },
-    "type": "Extended color light",
-    "name": "Hue color lamp 1",
-    "modelid": "LCT015",
-    "manufacturername": "Signify Netherlands B.V.",
-    "productname": "Hue color lamp",
     "capabilities": {
       "certified": true,
       "control": {
-        "mindimlevel": 1000,
-        "maxlumen": 806,
-        "colorgamuttype": "C",
         "colorgamut": [
           [
             0.6915,
             0.3083
           ],
           [
-            0.1700,
-            0.7000
+            0.17,
+            0.7
           ],
           [
             0.1532,
             0.0475
           ]
         ],
+        "colorgamuttype": "C",
         "ct": {
-          "min": 153,
-          "max": 500
-        }
+          "max": 500,
+          "min": 153
+        },
+        "maxlumen": 806,
+        "mindimlevel": 1000
       },
       "streaming": {
-        "renderer": true,
-        "proxy": true
+        "proxy": true,
+        "renderer": true
       }
     },
     "config": {
       "archetype": "sultanbulb",
-      "function": "mixed",
       "direction": "omnidirectional",
+      "function": "mixed",
       "startup": {
-        "mode": "safety",
-        "configured": true
+        "configured": true,
+        "mode": "safety"
       }
     },
-    "uniqueid": "00:17:88:01:04:d2:c6:57-0b",
-    "swversion": "1.50.2_r30933",
+    "manufacturername": "Signify Netherlands B.V.",
+    "modelid": "LCT015",
+    "name": "Hue color lamp 1",
+    "productid": "Philips-LCT015-1-A19ECLv5",
+    "productname": "Hue color lamp",
+    "state": {
+      "alert": "none",
+      "bri": 254,
+      "colormode": "xy",
+      "ct": 366,
+      "effect": "none",
+      "hue": 8402,
+      "mode": "homeautomation",
+      "on": true,
+      "reachable": true,
+      "sat": 140,
+      "xy": [
+        0.4575,
+        0.4099
+      ]
+    },
     "swconfigid": "772B0E5E",
-    "productid": "Philips-LCT015-1-A19ECLv5"
+    "swupdate": {
+      "lastinstall": "2020-03-03T13:52:40",
+      "state": "noupdates"
+    },
+    "swversion": "1.50.2_r30933",
+    "type": "Extended color light",
+    "uniqueid": "00:17:88:01:04:d2:c6:57-0b"
   },
   "2": {
-    "state": {
-      "on": true,
-      "bri": 254,
-      "hue": 8402,
-      "sat": 140,
-      "effect": "none",
-      "xy": [
-        0.4575,
-        0.4099
-      ],
-      "ct": 366,
-      "alert": "select",
-      "colormode": "xy",
-      "mode": "homeautomation",
-      "reachable": true
-    },
-    "swupdate": {
-      "state": "noupdates",
-      "lastinstall": "2020-03-03T13:52:34"
-    },
-    "type": "Extended color light",
-    "name": "Hue color lamp 2",
-    "modelid": "LCT015",
-    "manufacturername": "Signify Netherlands B.V.",
-    "productname": "Hue color lamp",
     "capabilities": {
       "certified": true,
       "control": {
-        "mindimlevel": 1000,
-        "maxlumen": 806,
-        "colorgamuttype": "C",
         "colorgamut": [
           [
             0.6915,
             0.3083
           ],
           [
-            0.1700,
-            0.7000
+            0.17,
+            0.7
           ],
           [
             0.1532,
             0.0475
           ]
         ],
+        "colorgamuttype": "C",
         "ct": {
-          "min": 153,
-          "max": 500
-        }
+          "max": 500,
+          "min": 153
+        },
+        "maxlumen": 806,
+        "mindimlevel": 1000
       },
       "streaming": {
-        "renderer": true,
-        "proxy": true
+        "proxy": true,
+        "renderer": true
       }
     },
     "config": {
       "archetype": "sultanbulb",
-      "function": "mixed",
       "direction": "omnidirectional",
+      "function": "mixed",
       "startup": {
-        "mode": "safety",
-        "configured": true
+        "configured": true,
+        "mode": "safety"
       }
     },
-    "uniqueid": "00:17:88:01:04:d2:c6:03-0b",
-    "swversion": "1.50.2_r30933",
+    "manufacturername": "Signify Netherlands B.V.",
+    "modelid": "LCT015",
+    "name": "Hue color lamp 2",
+    "productid": "Philips-LCT015-1-A19ECLv5",
+    "productname": "Hue color lamp",
+    "state": {
+      "alert": "select",
+      "bri": 254,
+      "colormode": "xy",
+      "ct": 366,
+      "effect": "none",
+      "hue": 8402,
+      "mode": "homeautomation",
+      "on": true,
+      "reachable": true,
+      "sat": 140,
+      "xy": [
+        0.4575,
+        0.4099
+      ]
+    },
     "swconfigid": "772B0E5E",
-    "productid": "Philips-LCT015-1-A19ECLv5"
+    "swupdate": {
+      "lastinstall": "2020-03-03T13:52:34",
+      "state": "noupdates"
+    },
+    "swversion": "1.50.2_r30933",
+    "type": "Extended color light",
+    "uniqueid": "00:17:88:01:04:d2:c6:03-0b"
   },
   "3": {
-    "state": {
-      "on": true,
-      "bri": 254,
-      "hue": 8402,
-      "sat": 140,
-      "effect": "none",
-      "xy": [
-        0.4575,
-        0.4099
-      ],
-      "ct": 366,
-      "alert": "select",
-      "colormode": "xy",
-      "mode": "homeautomation",
-      "reachable": true
-    },
-    "swupdate": {
-      "state": "noupdates",
-      "lastinstall": "2020-03-03T13:52:29"
-    },
-    "type": "Extended color light",
-    "name": "Hue color lamp 3",
-    "modelid": "LCT015",
-    "manufacturername": "Signify Netherlands B.V.",
-    "productname": "Hue color lamp",
     "capabilities": {
       "certified": true,
       "control": {
-        "mindimlevel": 1000,
-        "maxlumen": 806,
-        "colorgamuttype": "C",
         "colorgamut": [
           [
             0.6915,
             0.3083
           ],
           [
-            0.1700,
-            0.7000
+            0.17,
+            0.7
           ],
           [
             0.1532,
             0.0475
           ]
         ],
+        "colorgamuttype": "C",
         "ct": {
-          "min": 153,
-          "max": 500
-        }
+          "max": 500,
+          "min": 153
+        },
+        "maxlumen": 806,
+        "mindimlevel": 1000
       },
       "streaming": {
-        "renderer": true,
-        "proxy": true
+        "proxy": true,
+        "renderer": true
       }
     },
     "config": {
       "archetype": "sultanbulb",
-      "function": "mixed",
       "direction": "omnidirectional",
+      "function": "mixed",
       "startup": {
-        "mode": "safety",
-        "configured": true
+        "configured": true,
+        "mode": "safety"
       }
     },
-    "uniqueid": "00:17:88:01:04:d2:c3:c2-0b",
-    "swversion": "1.50.2_r30933",
-    "swconfigid": "772B0E5E",
-    "productid": "Philips-LCT015-1-A19ECLv5"
-  },
-  "4": {
+    "manufacturername": "Signify Netherlands B.V.",
+    "modelid": "LCT015",
+    "name": "Hue color lamp 3",
+    "productid": "Philips-LCT015-1-A19ECLv5",
+    "productname": "Hue color lamp",
     "state": {
-      "on": true,
+      "alert": "select",
       "bri": 254,
-      "hue": 8402,
-      "sat": 140,
+      "colormode": "xy",
+      "ct": 366,
       "effect": "none",
+      "hue": 8402,
+      "mode": "homeautomation",
+      "on": true,
+      "reachable": true,
+      "sat": 140,
       "xy": [
         0.4575,
         0.4099
-      ],
-      "ct": 366,
-      "alert": "select",
-      "colormode": "xy",
-      "mode": "homeautomation",
-      "reachable": true
+      ]
     },
+    "swconfigid": "772B0E5E",
     "swupdate": {
-      "state": "noupdates",
-      "lastinstall": "2020-03-03T13:52:25"
+      "lastinstall": "2020-03-03T13:52:29",
+      "state": "noupdates"
     },
+    "swversion": "1.50.2_r30933",
     "type": "Extended color light",
-    "name": "Hue lightstrip plus 1",
-    "modelid": "LST002",
-    "manufacturername": "Signify Netherlands B.V.",
-    "productname": "Hue lightstrip plus",
+    "uniqueid": "00:17:88:01:04:d2:c3:c2-0b"
+  },
+  "4": {
     "capabilities": {
       "certified": true,
       "control": {
-        "mindimlevel": 40,
-        "maxlumen": 1600,
-        "colorgamuttype": "C",
         "colorgamut": [
           [
             0.6915,
             0.3083
           ],
           [
-            0.1700,
-            0.7000
+            0.17,
+            0.7
           ],
           [
             0.1532,
             0.0475
           ]
         ],
+        "colorgamuttype": "C",
         "ct": {
-          "min": 153,
-          "max": 500
-        }
+          "max": 500,
+          "min": 153
+        },
+        "maxlumen": 1600,
+        "mindimlevel": 40
       },
       "streaming": {
-        "renderer": true,
-        "proxy": true
+        "proxy": true,
+        "renderer": true
       }
     },
     "config": {
       "archetype": "huelightstrip",
-      "function": "mixed",
       "direction": "omnidirectional",
+      "function": "mixed",
       "startup": {
-        "mode": "safety",
-        "configured": true
+        "configured": true,
+        "mode": "safety"
       }
     },
-    "uniqueid": "00:17:88:01:04:98:dd:df-0b",
-    "swversion": "1.50.2_r30933",
+    "manufacturername": "Signify Netherlands B.V.",
+    "modelid": "LST002",
+    "name": "Hue lightstrip plus 1",
+    "productid": "Philips-LST002-1-LedStripsv3",
+    "productname": "Hue lightstrip plus",
+    "state": {
+      "alert": "select",
+      "bri": 254,
+      "colormode": "xy",
+      "ct": 366,
+      "effect": "none",
+      "hue": 8402,
+      "mode": "homeautomation",
+      "on": true,
+      "reachable": true,
+      "sat": 140,
+      "xy": [
+        0.4575,
+        0.4099
+      ]
+    },
     "swconfigid": "59F2C3A3",
-    "productid": "Philips-LST002-1-LedStripsv3"
+    "swupdate": {
+      "lastinstall": "2020-03-03T13:52:25",
+      "state": "noupdates"
+    },
+    "swversion": "1.50.2_r30933",
+    "type": "Extended color light",
+    "uniqueid": "00:17:88:01:04:98:dd:df-0b"
   }
 }

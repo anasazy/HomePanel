@@ -1,70 +1,70 @@
 {
-  "state": {
-    "on": false,
-    "bri": 254,
-    "hue": 8402,
-    "sat": 140,
-    "effect": "none",
-    "xy": [
-      0.4575,
-      0.4099
-    ],
-    "ct": 366,
-    "alert": "select",
-    "colormode": "xy",
-    "mode": "homeautomation",
-    "reachable": true
-  },
-  "swupdate": {
-    "state": "noupdates",
-    "lastinstall": "2020-03-03T13:52:29"
-  },
-  "type": "Extended color light",
-  "name": "Hue color lamp 3",
-  "modelid": "LCT015",
-  "manufacturername": "Signify Netherlands B.V.",
-  "productname": "Hue color lamp",
   "capabilities": {
     "certified": true,
     "control": {
-      "mindimlevel": 1000,
-      "maxlumen": 806,
-      "colorgamuttype": "C",
       "colorgamut": [
         [
           0.6915,
           0.3083
         ],
         [
-          0.1700,
-          0.7000
+          0.17,
+          0.7
         ],
         [
           0.1532,
           0.0475
         ]
       ],
+      "colorgamuttype": "C",
       "ct": {
-        "min": 153,
-        "max": 500
-      }
+        "max": 500,
+        "min": 153
+      },
+      "maxlumen": 806,
+      "mindimlevel": 1000
     },
     "streaming": {
-      "renderer": true,
-      "proxy": true
+      "proxy": true,
+      "renderer": true
     }
   },
   "config": {
     "archetype": "sultanbulb",
-    "function": "mixed",
     "direction": "omnidirectional",
+    "function": "mixed",
     "startup": {
-      "mode": "safety",
-      "configured": true
+      "configured": true,
+      "mode": "safety"
     }
   },
-  "uniqueid": "00:17:88:01:04:d2:c3:c2-0b",
-  "swversion": "1.50.2_r30933",
+  "manufacturername": "Signify Netherlands B.V.",
+  "modelid": "LCT015",
+  "name": "Hue color lamp 3",
+  "productid": "Philips-LCT015-1-A19ECLv5",
+  "productname": "Hue color lamp",
+  "state": {
+    "alert": "select",
+    "bri": 254,
+    "colormode": "xy",
+    "ct": 366,
+    "effect": "none",
+    "hue": 8402,
+    "mode": "homeautomation",
+    "on": false,
+    "reachable": true,
+    "sat": 140,
+    "xy": [
+      0.4575,
+      0.4099
+    ]
+  },
   "swconfigid": "772B0E5E",
-  "productid": "Philips-LCT015-1-A19ECLv5"
+  "swupdate": {
+    "lastinstall": "2020-03-03T13:52:29",
+    "state": "noupdates"
+  },
+  "swversion": "1.50.2_r30933",
+  "type": "Extended color light",
+  "uniqueid": "00:17:88:01:04:d2:c3:c2-0b"
 }
