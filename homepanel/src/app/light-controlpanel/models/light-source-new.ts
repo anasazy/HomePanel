@@ -1,4 +1,4 @@
-interface State {
+export interface State {
 	alert: string; // select, none
 	bri: number;
 	colormode: string; // xy
@@ -12,34 +12,34 @@ interface State {
 	xy: [number, number];
 }
 
-interface SoftwareUpdate {
+export interface SoftwareUpdate {
 	lastinstall: string; // 2020-03-03T13:52:29
 	state: string; // noupdates
 }
 
-interface StartUp {
+export interface StartUp {
 	configured: boolean;
 	mode: string; // safety
 }
 
-interface Config {
+export interface Config {
 	archetype: string; // sultanbulb, huelightstrip
 	direction: string; // omnidirectional
 	function: string; // mixed
 	startup: StartUp;
 }
 
-interface Streaming {
+export interface Streaming {
 	renderer: boolean;
 	proxy: boolean;
 }
 
-interface CT {
+export interface CT {
 	min: number;
 	max: number;
 }
 
-interface Control {
+export interface Control {
 	colorgamut: [[number, number], [number, number], [number, number]];
 	colorgamuttype: string; // C
 	ct: CT;
@@ -47,7 +47,7 @@ interface Control {
 	mindimlevel: number;
 }
 
-interface Capabilities {
+export interface Capabilities {
 	certified: boolean;
 	control: Control;
 	streaming: Streaming;

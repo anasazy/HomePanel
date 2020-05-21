@@ -1,4 +1,4 @@
-interface Action {
+export interface Action {
 	alert: string; // select
 	bri: number;
 	colormode: string; // xy
@@ -10,7 +10,7 @@ interface Action {
 	xy: [number, number];
 }
 
-interface State {
+export interface State {
 	all_on: boolean;
 	any_on: boolean;
 }
